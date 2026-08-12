@@ -1,0 +1,15 @@
+# Archivos del juego que no deben versionarse
+*.pak
+*.exe
+*.dll
+
+# Escenarios binarios locales
+*.BFHP
+*.bfhp
+
+# Temporales
+*.tmp
+*.bak
+*.log
+Thumbs.db
+.DS_Store
