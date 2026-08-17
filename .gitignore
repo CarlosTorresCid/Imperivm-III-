@@ -3,9 +3,11 @@
 *.exe
 *.dll
 
-# Escenarios binarios locales
+# Escenarios binarios locales (excepto el escenario oficial versionado del proyecto)
 *.BFHP
 *.bfhp
+!map/scenario/*.BFHP
+!map/scenario/*.bfhp
 
 # Temporales
 *.tmp

@@ -12,14 +12,16 @@
 // - Lee fort.settlement.Units().
 // - Solo saca Military/BaseMage del propietario.
 // - Excluye la guarnicion especial de Fortresses_Main.
-// - Da UNA sola orden "advance" para salir.
-// - No reimpone ordenes continuamente.
+// - Sale a defender automaticamente.
+// - Mientras dura el ataque, las ordenes defensivas se reimponen.
+// - Si una auxiliar sale de fort.range, vuelve hacia el Outpost.
+// - No puede perseguir enemigos indefinidamente fuera de la posicion.
 //
 // FIN DEL ATAQUE:
 // - Espera 5 segundos sin enemigos.
-// - Da UNA sola orden "enter_tent" a auxiliares que siguen cerca.
-// - Las elimina inmediatamente del grupo temporal.
-// - Desde ese momento vuelven a ser tropas normales.
+// - En cuanto desaparece la amenaza, corta la persecucion y repliega.
+// - Tras 5 segundos de paz intenta meterlas de nuevo en el Outpost.
+// - Solo se liberan del grupo temporal cuando vuelven a la zona defensiva.
 //
 // CAMBIO DE PROPIETARIO:
 // - Las auxiliares antiguas NO cambian de bando.
@@ -315,7 +317,7 @@ while (1)
 
 
             // ----------------------------------------------------------------
-            // LIMPIAR AUXILIARES RETIRADAS / CAMBIADAS / ALEJADAS
+            // CONTROL DEFENSIVO DE AUXILIARES YA DESPLEGADAS
             // ----------------------------------------------------------------
 
             auxiliary =
@@ -338,21 +340,23 @@ while (1)
                 }
                 else
                 {
-                    if (aux.GetCommanded())
+                    if (
+                        fort.DistTo(aux)
+                        >
+                        fort.range
+                    )
                     {
-                        // El jugador le ha dado una orden manual.
-                        aux.RemoveFromGroup(auxGroup);
+                        aux.SetCommand(
+                            "move",
+                            fort.pos
+                        );
                     }
                     else
                     {
-                        if (
-                            fort.DistTo(aux)
-                            >
-                            fort.range + RELEASE_DISTANCE
-                        )
-                        {
-                            aux.RemoveFromGroup(auxGroup);
-                        }
+                        aux.SetCommand(
+                            "advance",
+                            enemies[0].pos
+                        );
                     }
                 }
             }
@@ -441,7 +445,7 @@ while (1)
 
 
         // ====================================================================
-        // DURANTE LA ESPERA, LIBERAR RETIRADAS MANUALES / UNIDADES LEJANAS
+        // DURANTE LA ESPERA, CORTAR LA PERSECUCION Y REPLEGAR
         // ====================================================================
 
         auxiliary =
@@ -464,21 +468,10 @@ while (1)
             }
             else
             {
-                if (aux.GetCommanded())
-                {
-                    aux.RemoveFromGroup(auxGroup);
-                }
-                else
-                {
-                    if (
-                        fort.DistTo(aux)
-                        >
-                        fort.range + RELEASE_DISTANCE
-                    )
-                    {
-                        aux.RemoveFromGroup(auxGroup);
-                    }
-                }
+                aux.SetCommand(
+                    "move",
+                    fort.pos
+                );
             }
         }
 
@@ -510,23 +503,37 @@ while (1)
                 auxiliary[j]
                 .AsUnit();
 
-            if (
-                aux.player == owner
-                &&
-                fort.DistTo(aux)
-                <=
-                fort.range + RELEASE_DISTANCE
-            )
+            if (aux.player != owner)
             {
-                aux.SetCommand(
-                    "enter_tent",
-                    fort
+                aux.RemoveFromGroup(
+                    auxGroup
                 );
             }
+            else
+            {
+                if (
+                    fort.DistTo(aux)
+                    >
+                    fort.range
+                )
+                {
+                    aux.SetCommand(
+                        "move",
+                        fort.pos
+                    );
+                }
+                else
+                {
+                    aux.SetCommand(
+                        "enter_tent",
+                        fort
+                    );
 
-            aux.RemoveFromGroup(
-                auxGroup
-            );
+                    aux.RemoveFromGroup(
+                        auxGroup
+                    );
+                }
+            }
         }
 
         EnvWriteInt(
