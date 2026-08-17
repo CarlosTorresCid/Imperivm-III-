@@ -1,10 +1,10 @@
-<div align="center">
+﻿<div align="center">
 
-# Imperivm III — Guerra Total
+# Imperivm III â€” Guerra Total
 
-### Un escenario estratégico a gran escala para Imperivm III / Great Battles of Rome HD
+### Un escenario estratÃ©gico a gran escala para Imperivm III / Great Battles of Rome HD
 
-**Guerra territorial · Fortalezas dinámicas · Defensa automatizada · Recompensas estratégicas · Modo Zombies**
+**Guerra territorial Â· Fortalezas dinÃ¡micas Â· Defensa automatizada Â· Recompensas estratÃ©gicas Â· Modo Zombies**
 
 <br>
 
@@ -18,9 +18,9 @@
 
 ## Sobre el proyecto
 
-**Imperivm III — Guerra Total** es un proyecto de modificación y diseño de escenario para *Imperivm III / Imperivm: Great Battles of Rome HD* orientado a ampliar considerablemente la profundidad estratégica del juego.
+**Imperivm III â€” Guerra Total** es un proyecto de modificaciÃ³n y diseÃ±o de escenario para **Imperivm III / Imperivm: Great Battles of Rome HD** orientado a ampliar considerablemente la profundidad estratÃ©gica del juego.
 
-El proyecto parte de un mapa diseñado para enfrentar a las ocho civilizaciones jugables dentro de una red territorial de ciudades, fortalezas, puestos defensivos y corredores naturales.
+El proyecto parte de un mapa diseÃ±ado para enfrentar a las ocho civilizaciones jugables dentro de una red territorial de ciudades, fortalezas, puestos defensivos y corredores naturales.
 
 <div align="center">
   <img src="mapa/Mapa.jpg"
@@ -31,28 +31,29 @@ El proyecto parte de un mapa diseñado para enfrentar a las ocho civilizaciones 
 Sobre esa base se han desarrollado sistemas propios mediante **Sequences `.vs`**, aprovechando y ampliando comportamientos existentes del motor:
 
 * fortalezas con guarniciones persistentes;
-* defensa automática de posiciones estratégicas;
-* reconquista dinámica;
-* recompensas por expansión;
+* defensa automÃ¡tica de posiciones estratÃ©gicas;
+* reconquista dinÃ¡mica;
+* recompensas por expansiÃ³n;
 * zonas territoriales que premian el dominio regional;
-* utilización defensiva de tropas almacenadas;
+* utilizaciÃ³n defensiva de tropas almacenadas;
 * un modo Zombies completo basado en oleadas, asedios y conquista de ciudades;
-* documentación técnica del lenguaje de scripting de Imperivm III;
-* investigación del comportamiento interno del motor mediante ingeniería inversa.
+* documentaciÃ³n tÃ©cnica del lenguaje de scripting de Imperivm III;
+* investigaciÃ³n del comportamiento interno del motor mediante ingenierÃ­a inversa.
 
-El objetivo no es sustituir las mecánicas originales, sino utilizarlas como base para construir una partida más territorial, dinámica y prolongada.
+El objetivo no es sustituir las mecÃ¡nicas originales, sino utilizarlas como base para construir una partida mÃ¡s territorial, dinÃ¡mica y prolongada.
 
 ---
 
 # El mapa
 
 <div align="center">
-
-<img src="assets/maps/Mapa_Nodos.png" alt="Mapa estratégico de nodos de Imperivm III Guerra Total" width="850">
-
+  <img src="mapa/MapaNodos.png"
+       alt="Mapa de Imperivm III Guerra Total"
+       width="900">
 </div>
 
-El mapa está estructurado como una red de **18 ciudades principales**:
+
+El mapa estÃ¡ estructurado como una red de **18 ciudades principales**:
 
 | Tipo                                   | Cantidad |
 | -------------------------------------- | -------: |
@@ -61,11 +62,11 @@ El mapa está estructurado como una red de **18 ciudades principales**:
 | Total                                  |       18 |
 | Civilizaciones / jugadores principales |        8 |
 
-Germania constituye una excepción al comenzar con dos posiciones separadas geográficamente.
+Germania constituye una excepciÃ³n al comenzar con dos posiciones separadas geogrÃ¡ficamente.
 
 ## Civilizaciones
 
-| Player | Civilización     |
+| Player | CivilizaciÃ³n     |
 | -----: | ---------------- |
 |      1 | Roma Imperial    |
 |      2 | Cartago          |
@@ -78,9 +79,9 @@ Germania constituye una excepción al comenzar con dos posiciones separadas geog
 
 El mapa no funciona como una arena completamente abierta.
 
-Montañas, bosques, ríos, ciudades y corredores naturales dividen el territorio en regiones y generan puntos de paso estratégicos.
+MontaÃ±as, bosques, rÃ­os, ciudades y corredores naturales dividen el territorio en regiones y generan puntos de paso estratÃ©gicos.
 
-Algunas ciudades funcionan como auténticas **puertas territoriales**:
+Algunas ciudades funcionan como autÃ©nticas **puertas territoriales**:
 
 ```text
 N1
@@ -93,19 +94,19 @@ O9
 
 Controlarlas puede abrir o cerrar el acceso entre regiones enteras.
 
-La intención es que la geografía produzca frentes reconocibles, guerras regionales y expansiones diferentes en cada partida.
+La intenciÃ³n es que la geografÃ­a produzca frentes reconocibles, guerras regionales y expansiones diferentes en cada partida.
 
-Documentación completa:
+Mapa estratÃ©gico de nodos:
 
-[`docs/mapa/Imperivm_III_Referencia_Mapa_Nodos.md`](docs/mapa/Imperivm_III_Referencia_Mapa_Nodos.md)
+[`mapa/Mapa Nodos.png`](mapa/MapaNodos.png)
 
 ---
 
-# Mecánicas principales
+# MecÃ¡nicas principales
 
 El escenario utiliza varias Sequences independientes.
 
-Cada una resuelve una responsabilidad concreta y puede interactuar con las demás sin convertir el proyecto en una única Sequence monolítica.
+Cada una resuelve una responsabilidad concreta y puede interactuar con las demÃ¡s sin convertir el proyecto en una Ãºnica Sequence monolÃ­tica.
 
 ## Sistema de fortalezas
 
@@ -113,27 +114,27 @@ Cada una resuelve una responsabilidad concreta y puede interactuar con las demá
 
 Convierte los Outposts culturales del mapa en **fortalezas defensivas persistentes**.
 
-Gestiona automáticamente:
+Gestiona automÃ¡ticamente:
 
 * descubrimiento de fortalezas;
-* guarniciones específicas según cultura;
-* defensa automática;
+* guarniciones especÃ­ficas segÃºn cultura;
+* defensa automÃ¡tica;
 * salida y retorno de los defensores;
-* regeneración gradual de bajas;
-* bloqueo de la captura mientras la posición siga defendida;
+* regeneraciÃ³n gradual de bajas;
+* bloqueo de la captura mientras la posiciÃ³n siga defendida;
 * cambio de propietario;
-* reconstrucción de la guarnición tras una conquista;
+* reconstrucciÃ³n de la guarniciÃ³n tras una conquista;
 * reconquistas ilimitadas.
 
 Las guarniciones pertenecen estructuralmente a la fortaleza.
 
-No funcionan como un ejército gratuito para el jugador y no dependen de la alimentación normal.
+No funcionan como un ejÃ©rcito gratuito para el jugador y no dependen de la alimentaciÃ³n normal.
 
-Una única Sequence administra todos los Outposts culturales del escenario.
+Una Ãºnica Sequence administra todos los Outposts culturales del escenario.
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/01_Fortresses_Main_Explicacion_Detallada.md`](docs/sequences/01_Fortresses_Main_Explicacion_Detallada.md)
+[`docs/secuencias/01_Fortresses_Main_Explicacion_Detallada.md`](docs/secuencias/01_Fortresses_Main_Explicacion_Detallada.md)
 
 ---
 
@@ -141,9 +142,9 @@ Documentación:
 
 ### `ForumCaptureReward_Main`
 
-Las ciudades neutrales no son únicamente posiciones territoriales.
+Las ciudades neutrales no son Ãºnicamente posiciones territoriales.
 
-Cuando un jugador conquista por primera vez uno de los Foros neutrales definidos por el escenario, recibe una **recompensa militar asociada a su civilización**.
+Cuando un jugador conquista por primera vez uno de los Foros neutrales definidos por el escenario, recibe una **recompensa militar asociada a su civilizaciÃ³n**.
 
 El sistema:
 
@@ -158,14 +159,14 @@ El sistema:
 A diferencia de las guarniciones de fortalezas, estas unidades son **tropas normales**:
 
 * consumen comida;
-* pueden recibir órdenes;
+* pueden recibir Ã³rdenes;
 * pueden ser utilizadas por la IA;
 * no se regeneran;
 * no quedan controladas posteriormente por la Sequence.
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/02_ForumCaptureReward_Main_Explicacion_Detallada.md`](docs/sequences/02_ForumCaptureReward_Main_Explicacion_Detallada.md)
+[`docs/secuencias/02_ForumCaptureReward_Main_Explicacion_Detallada.md`](docs/secuencias/02_ForumCaptureReward_Main_Explicacion_Detallada.md)
 
 ---
 
@@ -175,7 +176,7 @@ Documentación:
 
 Los `GGuardPost` utilizan un sistema distinto al de las fortalezas convencionales.
 
-Su defensa nativa se conserva y la Sequence añade una segunda capa terrestre.
+Su defensa nativa se conserva y la Sequence aÃ±ade una segunda capa terrestre.
 
 Cada Guard Post combina:
 
@@ -187,26 +188,26 @@ defensa nativa de sentinelas
 
 Los guardianes:
 
-* dependen de la civilización del propietario;
+* dependen de la civilizaciÃ³n del propietario;
 * permanecen ligados al puesto;
-* atacan automáticamente las amenazas cercanas;
-* regresan a la posición defensiva;
+* atacan automÃ¡ticamente las amenazas cercanas;
+* regresan a la posiciÃ³n defensiva;
 * se regeneran progresivamente;
-* no forman parte del ejército estratégico normal de la IA.
+* no forman parte del ejÃ©rcito estratÃ©gico normal de la IA.
 
-Mientras sobreviva al menos uno de los guardianes añadidos, el puesto continúa protegido frente a la captura.
+Mientras sobreviva al menos uno de los guardianes aÃ±adidos, el puesto continÃºa protegido frente a la captura.
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/03_GuardPosts_Main_Explicacion_Detallada.md`](docs/sequences/03_GuardPosts_Main_Explicacion_Detallada.md)
+[`docs/secuencias/03_GuardPosts_Main_Explicacion_Detallada.md`](docs/secuencias/03_GuardPosts_Main_Explicacion_Detallada.md)
 
 ---
 
-## Recompensas estratégicas de frontera
+## Recompensas estratÃ©gicas de frontera
 
 ### `GuardPostsFrontierReward_Main`
 
-Algunas regiones del mapa están agrupadas en zonas estratégicas:
+Algunas regiones del mapa estÃ¡n agrupadas en zonas estratÃ©gicas:
 
 ```text
 RewardZone_01
@@ -216,25 +217,25 @@ RewardZone_10
 
 Cada zona contiene varias posiciones territoriales.
 
-Cuando **todos los objetos de una zona pertenecen al mismo jugador**, ese jugador obtiene una recompensa estratégica.
+Cuando **todos los objetos de una zona pertenecen al mismo jugador**, ese jugador obtiene una recompensa estratÃ©gica.
 
 La recompensa consiste en:
 
 ```text
-2 ejércitos × 50 unidades
+2 ejÃ©rcitos Ã— 50 unidades
 =
 100 unidades
 ```
 
-La composición depende de la civilización del propietario e incluye unidades de diferentes funciones, como infantería, tropas a distancia, caballería cuando existe para esa cultura y héroes.
+La composiciÃ³n depende de la civilizaciÃ³n del propietario e incluye unidades de diferentes funciones, como infanterÃ­a, tropas a distancia, caballerÃ­a cuando existe para esa cultura y hÃ©roes.
 
-Una misma zona puede ser recompensada a jugadores diferentes en momentos distintos, pero cada combinación:
+Una misma zona puede ser recompensada a jugadores diferentes en momentos distintos, pero cada combinaciÃ³n:
 
 ```text
 zona + jugador
 ```
 
-sólo puede cobrarla una vez.
+sÃ³lo puede cobrarla una vez.
 
 Las tropas aparecen asociadas a la capital del jugador correspondiente mediante:
 
@@ -244,9 +245,9 @@ CapitalForum_P1
 CapitalForum_P8
 ```
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md`](docs/sequences/04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md)
+[`docs/secuencias/04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md`](docs/secuencias/04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md)
 
 ---
 
@@ -254,7 +255,7 @@ Documentación:
 
 ### `OutpostAuxDefense_Main`
 
-Las fortalezas pueden contener tropas normales además de su guarnición estructural.
+Las fortalezas pueden contener tropas normales ademÃ¡s de su guarniciÃ³n estructural.
 
 Esta Sequence permite utilizar esas tropas como **defensa auxiliar temporal**.
 
@@ -262,10 +263,10 @@ Cuando una fortaleza es atacada:
 
 ```text
 Fortresses_Main
-→ moviliza la guarnición estructural
+â†’ moviliza la guarniciÃ³n estructural
 
 OutpostAuxDefense_Main
-→ moviliza las tropas normales almacenadas
+â†’ moviliza las tropas normales almacenadas
 ```
 
 La Sequence distingue ambos grupos para evitar que dos sistemas intenten controlar las mismas unidades.
@@ -278,11 +279,11 @@ Cuando desaparece la amenaza:
 4. dejan de estar controladas por la Sequence;
 5. recuperan su comportamiento normal.
 
-Las tropas auxiliares que mueren **no se regeneran**. Son soldados reales que el propietario decidió almacenar previamente.
+Las tropas auxiliares que mueren **no se regeneran**. Son soldados reales que el propietario decidiÃ³ almacenar previamente.
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/05_OutpostAuxDefense_Main_Explicacion_Detallada.md`](docs/sequences/05_OutpostAuxDefense_Main_Explicacion_Detallada.md)
+[`docs/secuencias/05_OutpostAuxDefense_Main_Explicacion_Detallada.md`](docs/secuencias/05_OutpostAuxDefense_Main_Explicacion_Detallada.md)
 
 ---
 
@@ -290,15 +291,15 @@ Documentación:
 
 <div align="center">
 
-<img src="assets/images/modo_zombies.png" alt="Modo Zombies de Imperivm III Guerra Total" width="850">
+<img src="secuencias/Modo%20zombie/modo%20zombies.png" alt="Modo Zombies de Imperivm III Guerra Total" width="850">
 
 </div>
 
-El **Modo Zombies** introduce una amenaza independiente que aparece durante una partida normal y obliga a las civilizaciones a enfrentarse a ejércitos controlados por scripting.
+El **Modo Zombies** introduce una amenaza independiente que aparece durante una partida normal y obliga a las civilizaciones a enfrentarse a ejÃ©rcitos controlados por scripting.
 
-Para el jugador es una sola mecánica.
+Para el jugador es una sola mecÃ¡nica.
 
-Internamente está dividida en tres módulos:
+Internamente estÃ¡ dividida en tres mÃ³dulos:
 
 ```text
 ZombieWaves_Main
@@ -306,42 +307,42 @@ ZombieTactical_Main
 ZombieRewards_Main
 ```
 
-## Diseño de las oleadas
+## DiseÃ±o de las oleadas
 
-La configuración actual está diseñada alrededor de:
+La configuraciÃ³n actual estÃ¡ diseÃ±ada alrededor de:
 
-| Parámetro                    |      Valor |
+| ParÃ¡metro                    |      Valor |
 | ---------------------------- | ---------: |
 | Rondas                       |         40 |
-| Preparación inicial          | 30 minutos |
+| PreparaciÃ³n inicial          | 30 minutos |
 | Intervalo entre rondas       |  2 minutos |
-| Puntos posibles de aparición |          8 |
+| Puntos posibles de apariciÃ³n |          8 |
 | Player de la horda           |         12 |
 | Rondas 1-32                  |    1 horda |
 | Rondas 33-40                 |   2 hordas |
-| Máximo de hordas internas    |         48 |
+| MÃ¡ximo de hordas internas    |         48 |
 
 Las composiciones aumentan progresivamente de dificultad y pueden mezclar unidades procedentes de distintas civilizaciones.
 
 Las unidades de la horda pertenecen siempre al **Player 12**.
 
-## Generación
+## GeneraciÃ³n
 
 ### `ZombieWaves_Main_40R_48H_FINAL_UI`
 
 Se encarga de:
 
-* temporización;
-* número de ronda;
+* temporizaciÃ³n;
+* nÃºmero de ronda;
 * avisos previos;
-* selección aleatoria del punto de aparición;
-* composición de cada horda;
+* selecciÃ³n aleatoria del punto de apariciÃ³n;
+* composiciÃ³n de cada horda;
 * nivel de las tropas;
-* creación mediante `Place()`;
-* creación de los Groups dinámicos `HW_Hx`;
-* inicialización del estado de cada horda.
+* creaciÃ³n mediante `Place()`;
+* creaciÃ³n de los Groups dinÃ¡micos `HW_Hx`;
+* inicializaciÃ³n del estado de cada horda.
 
-Los puntos de aparición se definen mediante:
+Los puntos de apariciÃ³n se definen mediante:
 
 ```text
 HordeSpawn_01
@@ -354,41 +355,41 @@ HordeSpawn_07
 HordeSpawn_08
 ```
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md`](docs/sequences/08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md)
+[`docs/secuencias/08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md`](docs/secuencias/08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md)
 
 ---
 
-## Control táctico
+## Control tÃ¡ctico
 
 ### `ZombieTactical_Main_v10_5_WALL_STUCK_GATE`
 
-Es el controlador táctico de las hordas.
+Es el controlador tÃ¡ctico de las hordas.
 
-Su objetivo es que una horda no se limite a recibir una orden de movimiento, sino que pueda mantener un objetivo estratégico e intentar alcanzar una ciudad fortificada.
+Su objetivo es que una horda no se limite a recibir una orden de movimiento, sino que pueda mantener un objetivo estratÃ©gico e intentar alcanzar una ciudad fortificada.
 
 Gestiona:
 
-* selección del Foro objetivo;
+* selecciÃ³n del Foro objetivo;
 * marcha hacia la ciudad;
 * mantenimiento del objetivo;
-* detección de bloqueos;
-* localización de Gates;
+* detecciÃ³n de bloqueos;
+* localizaciÃ³n de Gates;
 * inicio del asedio;
-* seguimiento de máquinas de asedio;
-* detección de brecha;
+* seguimiento de mÃ¡quinas de asedio;
+* detecciÃ³n de brecha;
 * avance tras destruir la puerta;
-* búsqueda de una posible segunda Gate;
-* presión sobre la loyalty;
+* bÃºsqueda de una posible segunda Gate;
+* presiÃ³n sobre la loyalty;
 * captura del Settlement;
 * retargeting;
-* detección de destrucción de la horda;
-* preparación del evento de recompensa.
+* detecciÃ³n de destrucciÃ³n de la horda;
+* preparaciÃ³n del evento de recompensa.
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md`](docs/sequences/07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md)
+[`docs/secuencias/07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md`](docs/secuencias/07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md)
 
 ---
 
@@ -400,12 +401,12 @@ Cuando una horda es destruida, el sistema puede entregar tropas al jugador que h
 
 La Sequence de recompensas no controla el combate.
 
-Recibe del controlador táctico:
+Recibe del controlador tÃ¡ctico:
 
 ```text
 jugador
 ronda
-posición del Foro
+posiciÃ³n del Foro
 evento pendiente
 ```
 
@@ -413,9 +414,9 @@ y transforma esos datos en una recompensa militar.
 
 Las rondas cuentan con composiciones propias y determinadas rondas incluyen recompensas especiales.
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/sequences/06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md`](docs/sequences/06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md)
+[`docs/secuencias/06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md`](docs/secuencias/06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md)
 
 ---
 
@@ -439,17 +440,17 @@ flowchart TD
     L --> M[Recompensa militar]
 ```
 
-Los tres módulos utilizan estado compartido, pero mantienen responsabilidades separadas.
+Los tres mÃ³dulos utilizan estado compartido, pero mantienen responsabilidades separadas.
 
 ---
 
 # Arquitectura general
 
-El escenario puede resumirse conceptualmente así:
+El escenario puede resumirse conceptualmente asÃ­:
 
 ```mermaid
 flowchart LR
-    MAPA[Mapa estratégico]
+    MAPA[Mapa estratÃ©gico]
 
     MAPA --> FORT[Fortalezas]
     MAPA --> GP[Guard Posts]
@@ -477,59 +478,50 @@ flowchart LR
 
 ```text
 Imperivm-III-Guerra-Total/
-│
-├── README.md
-│
-├── sequences/
-│   ├── Fortresses_Main.vs
-│   ├── ForumCaptureReward_Main.vs
-│   ├── GuardPosts_Main.vs
-│   ├── GuardPostsFrontierReward_Main.vs
-│   ├── OutpostAuxDefense_Main.vs
-│   ├── ZombieRewards_Main_48H_40R.vs
-│   ├── ZombieTactical_Main_v10_5_WALL_STUCK_GATE.vs
-│   └── ZombieWaves_Main_40R_48H_FINAL_UI.vs
-│
-├── docs/
-│   ├── manual/
-│   │   └── Imperivm_III_Manual_Ingenieria_Inversa.md
-│   │
-│   ├── sequences/
-│   │   ├── 01_Fortresses_Main_Explicacion_Detallada.md
-│   │   ├── 02_ForumCaptureReward_Main_Explicacion_Detallada.md
-│   │   ├── 03_GuardPosts_Main_Explicacion_Detallada.md
-│   │   ├── 04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md
-│   │   ├── 05_OutpostAuxDefense_Main_Explicacion_Detallada.md
-│   │   ├── 06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md
-│   │   ├── 07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md
-│   │   └── 08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md
-│   │
-│   └── mapa/
-│       └── Imperivm_III_Referencia_Mapa_Nodos.md
-│
-├── research/
-│   └── investigaciones de ingeniería inversa
-│
-├── assets/
-│   ├── maps/
-│   │   ├── Mapa_desde_Editor.jpg
-│   │   ├── Mapa.jpg
-│   │   └── Mapa_Nodos.png
-│   │
-│   └── images/
-│       └── modo_zombies.png
-│
-└── archive/
-    └── versiones_antiguas/
+â”‚
+â”œâ”€â”€ README.md
+â”œâ”€â”€ .gitignore
+â”‚
+â”œâ”€â”€ docs/
+â”‚   â”œâ”€â”€ manual/
+â”‚   â”‚   â””â”€â”€ Imperivm_III_Manual_Ingenieria_Inversa.md
+â”‚   â”‚
+â”‚   â””â”€â”€ secuencias/
+â”‚       â”œâ”€â”€ 01_Fortresses_Main_Explicacion_Detallada.md
+â”‚       â”œâ”€â”€ 02_ForumCaptureReward_Main_Explicacion_Detallada.md
+â”‚       â”œâ”€â”€ 03_GuardPosts_Main_Explicacion_Detallada.md
+â”‚       â”œâ”€â”€ 04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md
+â”‚       â”œâ”€â”€ 05_OutpostAuxDefense_Main_Explicacion_Detallada.md
+â”‚       â”œâ”€â”€ 06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md
+â”‚       â”œâ”€â”€ 07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md
+â”‚       â””â”€â”€ 08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md
+â”‚
+â”œâ”€â”€ mapa/
+â”‚   â”œâ”€â”€ Mapa Nodos.png
+â”‚   â”œâ”€â”€ Mapa desde Editor.jpg
+â”‚   â””â”€â”€ Mapa.jpg
+â”‚
+â””â”€â”€ secuencias/
+    â”œâ”€â”€ Fortresses_Main.vs
+    â”œâ”€â”€ ForumCaptureReward_Main.vs
+    â”œâ”€â”€ GuardPostsFrontierReward_Main.vs
+    â”œâ”€â”€ GuardPosts_Main.vs
+    â”œâ”€â”€ OutpostAuxDefense_Main.vs
+    â”‚
+    â””â”€â”€ Modo zombie/
+        â”œâ”€â”€ modo zombies.png
+        â”œâ”€â”€ ZombieRewards_Main_48H_40R.vs
+        â”œâ”€â”€ ZombieTactical_Main_v10_5_WALL_STUCK_GATE.vs
+        â””â”€â”€ ZombieWaves_Main_40R_48H_FINAL_UI.vs
 ```
 
 ---
 
-# Documentación
+# DocumentaciÃ³n
 
-## Manual técnico
+## Manual tÃ©cnico
 
-El manual central del proyecto documenta el lenguaje de scripting utilizado por el juego y los resultados de la ingeniería inversa:
+El manual central del proyecto documenta el lenguaje de scripting utilizado por el juego y los resultados de la ingenierÃ­a inversa:
 
 [`docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md`](docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md)
 
@@ -544,65 +536,50 @@ Incluye, entre otros temas:
 * `SetFeeding()`;
 * `SetNoAIFlag()`;
 * `ForceAddUnit()`;
-* órdenes de unidades;
+* Ã³rdenes de unidades;
 * Outposts;
 * Guard Posts;
 * loyalty y captura;
-* creación dinámica;
+* creaciÃ³n dinÃ¡mica;
 * IA;
 * Townhalls;
 * arquitectura de fortalezas;
 * patrones de escenarios oficiales;
 * seguimiento de hordas;
-* análisis del motor.
+* anÃ¡lisis del motor.
 
-## Documentación de Sequences
+## DocumentaciÃ³n de Sequences
 
-Cada Sequence de producción dispone de un documento independiente donde se explica:
+Cada Sequence de producciÃ³n dispone de un documento independiente donde se explica:
 
-* qué hace;
-* qué objetos controla;
-* qué hay que preparar en el editor;
-* qué Groups necesita;
-* qué estado persiste;
-* cómo funciona internamente;
-* qué dependencias tiene;
-* qué limitaciones presenta.
+* quÃ© hace;
+* quÃ© objetos controla;
+* quÃ© hay que preparar en el editor;
+* quÃ© Groups necesita;
+* quÃ© estado persiste;
+* cÃ³mo funciona internamente;
+* quÃ© dependencias tiene;
+* quÃ© limitaciones presenta.
 
 Consulta:
 
-[`docs/sequences/`](docs/sequences/)
+[Abrir documentaciÃ³n de Sequences](docs/secuencias/)
 
-## Investigación
+## InvestigaciÃ³n e ingenierÃ­a inversa
 
-La carpeta:
+La investigaciÃ³n tÃ©cnica que sirve de base al proyecto se ha consolidado en el manual principal:
 
-[`research/`](research/)
+[`docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md`](docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md)
 
-contiene el material utilizado durante el proceso de ingeniería inversa:
-
-* análisis de escenarios oficiales;
-* investigación del `data.pak`;
-* pruebas de APIs;
-* investigaciones de fortalezas;
-* rosters de unidades;
-* descubrimientos experimentales;
-* análisis de IA;
-* hipótesis históricas y resultados de pruebas.
-
-Estos documentos sirven como **histórico técnico y evidencia de investigación**.
-
-No deben interpretarse necesariamente como la descripción de la implementación actual.
-
-Cuando una investigación antigua y el manual actual discrepan, prevalece la conclusión más reciente del manual.
+El manual reÃºne los descubrimientos obtenidos mediante anÃ¡lisis de scripts nativos, escenarios oficiales, pruebas directas en el editor e ingenierÃ­a inversa del motor.
 
 ---
 
-# Instalación y uso
+# InstalaciÃ³n y uso
 
 Este proyecto utiliza el editor de escenarios de Imperivm III y Sequences `.vs`.
 
-La configuración exacta depende de cada sistema.
+La configuraciÃ³n exacta depende de cada sistema.
 
 ## Sequences principales
 
@@ -610,8 +587,8 @@ En:
 
 ```text
 Scenario
-└── Map
-    └── Sequences
+â””â”€â”€ Map
+    â””â”€â”€ Sequences
 ```
 
 deben existir las Sequences que se quieran utilizar.
@@ -622,7 +599,7 @@ Para los controladores principales:
 Autorun allowed = activado
 ```
 
-Después:
+DespuÃ©s:
 
 1. abrir `Source`;
 2. introducir el contenido del `.vs` correspondiente;
@@ -631,7 +608,7 @@ Después:
 5. guardar el escenario;
 6. probar el comportamiento en partida.
 
-La documentación individual de cada Sequence contiene los requisitos exactos.
+La documentaciÃ³n individual de cada Sequence contiene los requisitos exactos.
 
 ---
 
@@ -639,7 +616,7 @@ La documentación individual de cada Sequence contiene los requisitos exactos.
 
 No todos los sistemas necesitan Groups manuales.
 
-Los principales utilizados por la configuración actual son:
+Los principales utilizados por la configuraciÃ³n actual son:
 
 ### Capitales
 
@@ -654,7 +631,7 @@ CapitalForum_P7
 CapitalForum_P8
 ```
 
-Cada uno debe apuntar al Foro capital correspondiente cuando la mecánica que lo utiliza esté activa.
+Cada uno debe apuntar al Foro capital correspondiente cuando la mecÃ¡nica que lo utiliza estÃ© activa.
 
 ### Modo Zombies
 
@@ -678,7 +655,7 @@ RewardZone_02
 RewardZone_10
 ```
 
-Los Groups dinámicos como:
+Los Groups dinÃ¡micos como:
 
 ```text
 __FRT_X_Y
@@ -695,32 +672,32 @@ son gestionados por las Sequences y **no deben poblarse manualmente**.
 
 # Estado del proyecto
 
-El proyecto continúa en desarrollo activo.
+El proyecto continÃºa en desarrollo activo.
 
 | Sistema                      | Estado                     |
 | ---------------------------- | -------------------------- |
-| Mapa estratégico             | Diseñado y documentado     |
+| Mapa estratÃ©gico             | DiseÃ±ado y documentado     |
 | Sistema de fortalezas        | Implementado               |
 | Recompensa por Foro neutral  | Implementada               |
 | Guard Posts                  | Implementado               |
 | Recompensas de frontera      | Implementadas              |
 | Defensa auxiliar de Outposts | Implementada               |
-| Generación de hordas Zombies | Funcional                  |
+| GeneraciÃ³n de hordas Zombies | Funcional                  |
 | Recompensas Zombies          | Implementadas              |
-| IA táctica Zombies           | En desarrollo y validación |
-| Asedio automático Zombies    | En desarrollo              |
-| Navegación tras brecha       | En desarrollo              |
-| Documentación de scripting   | Activa y en expansión      |
+| IA tÃ¡ctica Zombies           | En desarrollo y validaciÃ³n |
+| Asedio automÃ¡tico Zombies    | En desarrollo              |
+| NavegaciÃ³n tras brecha       | En desarrollo              |
+| DocumentaciÃ³n de scripting   | Activa y en expansiÃ³n      |
 
 ---
 
 # Limitaciones conocidas
 
-Imperivm III no fue diseñado originalmente para algunas de las mecánicas implementadas aquí.
+Imperivm III no fue diseÃ±ado originalmente para algunas de las mecÃ¡nicas implementadas aquÃ­.
 
 Eso obliga a trabajar alrededor de ciertas limitaciones del motor.
 
-## IA y navegación
+## IA y navegaciÃ³n
 
 La IA puede presentar dificultades especialmente alrededor de:
 
@@ -729,33 +706,33 @@ La IA puede presentar dificultades especialmente alrededor de:
 * brechas;
 * entradas estrechas;
 * ciudades amuralladas;
-* transición entre movimiento y asedio.
+* transiciÃ³n entre movimiento y asedio.
 
-El controlador táctico de Zombies intenta compensar estas situaciones mediante detección de obstáculos, asedio, reintentos y retargeting.
+El controlador tÃ¡ctico de Zombies intenta compensar estas situaciones mediante detecciÃ³n de obstÃ¡culos, asedio, reintentos y retargeting.
 
 ## Modo Zombies: slots de las rondas finales
 
-La generación actual está preparada para un máximo de:
+La generaciÃ³n actual estÃ¡ preparada para un mÃ¡ximo de:
 
 ```text
 48 hordas
 ```
 
-porque las rondas 33-40 generan dos hordas simultáneas.
+porque las rondas 33-40 generan dos hordas simultÃ¡neas.
 
-La versión actual documentada de:
+La versiÃ³n actual documentada de:
 
 ```text
 ZombieTactical_Main_v10_5_WALL_STUCK_GATE
 ```
 
-controla todavía:
+controla todavÃ­a:
 
 ```text
 HW_H1 ... HW_H32
 ```
 
-Por tanto el soporte táctico de:
+Por tanto el soporte tÃ¡ctico de:
 
 ```text
 HW_H33 ... HW_H48
@@ -765,35 +742,35 @@ debe alinearse antes de considerar completamente cerradas las rondas finales.
 
 ## Recompensas territoriales
 
-Algunas Sequences calculan coordenadas para representar dos formaciones exteriores, pero su implementación actual introduce las tropas en el `Settlement` correspondiente.
+Algunas Sequences calculan coordenadas para representar dos formaciones exteriores, pero su implementaciÃ³n actual introduce las tropas en el `Settlement` correspondiente.
 
-Este comportamiento está documentado y puede revisarse posteriormente sin cambiar el principio general de la mecánica.
+Este comportamiento estÃ¡ documentado y puede revisarse posteriormente sin cambiar el principio general de la mecÃ¡nica.
 
-## Navegación marítima
+## NavegaciÃ³n marÃ­tima
 
-El motor dispone de agua, barcos y navegación, pero la utilización estratégica de estas rutas por parte de la IA es limitada en comparación con el movimiento terrestre.
+El motor dispone de agua, barcos y navegaciÃ³n, pero la utilizaciÃ³n estratÃ©gica de estas rutas por parte de la IA es limitada en comparaciÃ³n con el movimiento terrestre.
 
-Por esta razón el diseño estratégico principal del escenario se apoya en corredores terrestres.
+Por esta razÃ³n el diseÃ±o estratÃ©gico principal del escenario se apoya en corredores terrestres.
 
 ---
 
-# Filosofía de desarrollo
+# FilosofÃ­a de desarrollo
 
-Una de las reglas fundamentales del proyecto es no asumir que Imperivm III funciona como C++ estándar ni inventar APIs que el motor no posea.
+Una de las reglas fundamentales del proyecto es no asumir que Imperivm III funciona como C++ estÃ¡ndar ni inventar APIs que el motor no posea.
 
 La prioridad de evidencia utilizada es:
 
 ```text
 prueba real en partida
-        ↓
+        â†“
 Sequence oficial
-        ↓
+        â†“
 script nativo
-        ↓
-definición interna de clase
-        ↓
-análisis automatizado
-        ↓
+        â†“
+definiciÃ³n interna de clase
+        â†“
+anÃ¡lisis automatizado
+        â†“
 inferencia
 ```
 
@@ -818,32 +795,32 @@ RunSequence()
 SpawnGroupInHolder()
 ```
 
-La documentación distingue expresamente entre comportamiento confirmado, evidencia parcial e inferencia.
+La documentaciÃ³n distingue expresamente entre comportamiento confirmado, evidencia parcial e inferencia.
 
 ---
 
 # Objetivo
 
-La intención final de **Imperivm III — Guerra Total** es convertir una partida de Imperivm III en una guerra territorial de larga duración en la que:
+La intenciÃ³n final de **Imperivm III â€” Guerra Total** es convertir una partida de Imperivm III en una guerra territorial de larga duraciÃ³n en la que:
 
-* la geografía importe;
-* conquistar una posición tenga consecuencias;
-* las fortalezas sean auténticos objetivos militares;
-* los puestos fronterizos tengan valor estratégico;
-* las ciudades neutrales impulsen la expansión;
+* la geografÃ­a importe;
+* conquistar una posiciÃ³n tenga consecuencias;
+* las fortalezas sean autÃ©nticos objetivos militares;
+* los puestos fronterizos tengan valor estratÃ©gico;
+* las ciudades neutrales impulsen la expansiÃ³n;
 * las tropas almacenadas participen en la defensa;
 * diferentes regiones produzcan diferentes frentes;
 * la IA tenga nuevos sistemas con los que interactuar;
 * y una amenaza externa pueda alterar por completo una guerra entre civilizaciones.
 
-El proyecto combina diseño de mapa, scripting, experimentación e ingeniería inversa para llevar el editor de Imperivm III más allá de sus mecánicas habituales.
+El proyecto combina diseÃ±o de mapa, scripting, experimentaciÃ³n e ingenierÃ­a inversa para llevar el editor de Imperivm III mÃ¡s allÃ¡ de sus mecÃ¡nicas habituales.
 
 ---
 
 # Aviso
 
-Este es un proyecto **no oficial** realizado para *Imperivm III / Imperivm: Great Battles of Rome HD*.
+Este es un proyecto **no oficial** realizado para **Imperivm III / Imperivm: Great Battles of Rome HD**.
 
-No está afiliado ni respaldado por los desarrolladores o distribuidores originales del juego.
+No estÃ¡ afiliado ni respaldado por los desarrolladores o distribuidores originales del juego.
 
-Todo el trabajo de scripting, documentación, diseño de escenario e investigación contenido en este repositorio corresponde al proyecto **Imperivm III — Guerra Total**.
+Todo el trabajo de scripting, documentaciÃ³n, diseÃ±o de escenario e investigaciÃ³n contenido en este repositorio corresponde al proyecto **Imperivm III â€” Guerra Total**.
