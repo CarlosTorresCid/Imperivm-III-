@@ -1,14 +1,16 @@
-<div align="center">
+﻿<div align="center">
 
-# Imperivm III — Guerra Total
+# Imperivm III â€” Guerra Total
 
-### Un escenario estratégico a gran escala para Imperivm III / Great Battles of Rome HD
+### Un escenario estratÃ©gico a gran escala para Imperivm III / Great Battles of Rome HD
 
-**Guerra territorial · Fortalezas dinámicas · Defensa automatizada · Recompensas estratégicas · Modo Zombies**
+**Guerra territorial Â· Fortalezas dinÃ¡micas Â· Recompensas estratÃ©gicas Â· Modo Zombies endless Â· Easter Egg completo**
+
+**VersiÃ³n 2.0 Â· 03/09/2026 Â· ESTABLE**
 
 <br>
 
-<img src="secuencias/Modo%20zombie/modo%20zombies.png"
+<img src="imagenes/pantalla%20carga/Portada.png"
      alt="Imperivm III Guerra Total - Modo Zombies"
      width="900">
 
@@ -16,11 +18,35 @@
 
 ---
 
-## Sobre el proyecto
+# Sobre el proyecto
 
-**Imperivm III — Guerra Total** es un proyecto de modificación y diseño de escenario para **Imperivm III / Imperivm: Great Battles of Rome HD** orientado a ampliar considerablemente la profundidad estratégica del juego.
+**Imperivm III â€” Guerra Total** es un proyecto de modificaciÃ³n, scripting y diseÃ±o de escenario para **Imperivm III / Imperivm: Great Battles of Rome HD**.
 
-El proyecto parte de un mapa diseñado para enfrentar a las ocho civilizaciones jugables dentro de una red territorial de ciudades, fortalezas, puestos defensivos y corredores naturales.
+El objetivo es ampliar considerablemente la profundidad estratÃ©gica del juego mediante una combinaciÃ³n de:
+
+- diseÃ±o territorial;
+- Sequences `.vs`;
+- sistemas defensivos persistentes;
+- generaciÃ³n dinÃ¡mica de tropas;
+- control tÃ¡ctico personalizado;
+- recompensas por expansiÃ³n;
+- un Modo Zombies completamente integrado;
+- un Easter Egg narrativo de varias fases;
+- ingenierÃ­a inversa del motor y de los escenarios oficiales.
+
+El proyecto se desarrolla sobre el mapa:
+
+```text
+Carlos Guerra Total prueba zombie
+```
+
+Estado de la compilaciÃ³n documentada:
+
+```text
+VersiÃ³n: 2.0
+Fecha: 03/09/2026
+Estado: ESTABLE
+```
 
 <div align="center">
   <img src="mapa/Mapa.jpg"
@@ -28,19 +54,7 @@ El proyecto parte de un mapa diseñado para enfrentar a las ocho civilizaciones 
        width="900">
 </div>
 
-Sobre esa base se han desarrollado sistemas propios mediante **Sequences `.vs`**, aprovechando y ampliando comportamientos existentes del motor:
-
-* fortalezas con guarniciones persistentes;
-* defensa automática de posiciones estratégicas;
-* reconquista dinámica;
-* recompensas por expansión;
-* zonas territoriales que premian el dominio regional;
-* utilización defensiva de tropas almacenadas;
-* un modo Zombies completo basado en oleadas, asedios y conquista de ciudades;
-* documentación técnica del lenguaje de scripting de Imperivm III;
-* investigación del comportamiento interno del motor mediante ingeniería inversa.
-
-El objetivo no es sustituir las mecánicas originales, sino utilizarlas como base para construir una partida más territorial, dinámica y prolongada.
+La intenciÃ³n no es sustituir las mecÃ¡nicas originales de Imperivm III, sino utilizarlas como base para construir una guerra territorial mÃ¡s larga, dinÃ¡mica y estratÃ©gica.
 
 ---
 
@@ -48,40 +62,46 @@ El objetivo no es sustituir las mecánicas originales, sino utilizarlas como bas
 
 <div align="center">
   <img src="mapa/MapaNodos.png"
-       alt="Mapa de Imperivm III Guerra Total"
+       alt="Mapa de nodos de Imperivm III Guerra Total"
        width="900">
 </div>
 
+El mapa estÃ¡ estructurado como una red de **18 ciudades principales**.
 
-El mapa está estructurado como una red de **18 ciudades principales**:
+| Tipo | Cantidad |
+|---|---:|
+| Ciudades ocupadas al inicio | 9 |
+| Ciudades neutrales | 9 |
+| Total | 18 |
+| Civilizaciones / jugadores principales | 8 |
 
-| Tipo                                   | Cantidad |
-| -------------------------------------- | -------: |
-| Ciudades ocupadas al inicio            |        9 |
-| Ciudades neutrales                     |        9 |
-| Total                                  |       18 |
-| Civilizaciones / jugadores principales |        8 |
-
-Germania constituye una excepción al comenzar con dos posiciones separadas geográficamente.
+Germania constituye una excepciÃ³n al comenzar con dos posiciones separadas geogrÃ¡ficamente.
 
 ## Civilizaciones
 
-| Player | Civilización     |
-| -----: | ---------------- |
-|      1 | Roma Imperial    |
-|      2 | Cartago          |
-|      3 | Iberia           |
-|      4 | Galia            |
-|      5 | Britania         |
-|      6 | Germania         |
-|      7 | Roma Republicana |
-|      8 | Egipto           |
+| Player | CivilizaciÃ³n |
+|---:|---|
+| 1 | Roma Imperial |
+| 2 | Cartago |
+| 3 | Iberia |
+| 4 | Galia |
+| 5 | Britania |
+| 6 | Germania |
+| 7 | Roma Republicana |
+| 8 | Egipto |
 
-El mapa no funciona como una arena completamente abierta.
+La geografÃ­a estÃ¡ diseÃ±ada para producir:
 
-Montañas, bosques, ríos, ciudades y corredores naturales dividen el territorio en regiones y generan puntos de paso estratégicos.
+```text
+frentes regionales
+corredores de invasiÃ³n
+ciudades-puerta
+posiciones defensivas
+rutas alternativas
+cuellos de botella
+```
 
-Algunas ciudades funcionan como auténticas **puertas territoriales**:
+Algunas ciudades funcionan como autÃ©nticos puntos de paso territorial:
 
 ```text
 N1
@@ -92,257 +112,388 @@ O7
 O9
 ```
 
-Controlarlas puede abrir o cerrar el acceso entre regiones enteras.
+El control de estas posiciones puede abrir o cerrar regiones completas del mapa.
 
-La intención es que la geografía produzca frentes reconocibles, guerras regionales y expansiones diferentes en cada partida.
+Mapa estratÃ©gico:
 
-Mapa estratégico de nodos:
-
-[`mapa/Mapa Nodos.png`](mapa/MapaNodos.png)
+[`mapa/MapaNodos.png`](mapa/MapaNodos.png)
 
 ---
 
-# Mecánicas principales
+# Arquitectura general de la versiÃ³n 2.0
 
-El escenario utiliza varias Sequences independientes.
+La versiÃ³n estable utiliza **23 Sequences documentadas**.
 
-Cada una resuelve una responsabilidad concreta y puede interactuar con las demás sin convertir el proyecto en una única Sequence monolítica.
+```text
+SISTEMAS TERRITORIALES
+â”œâ”€â”€ Fortresses_Main
+â”œâ”€â”€ ForumCaptureReward_Main
+â”œâ”€â”€ GGuardPost
+â”œâ”€â”€ GuardPostsFrontierReward_Main
+â””â”€â”€ OutpostAuxDefense_Main
 
-## Sistema de fortalezas
+MODO ZOMBIES
+â”œâ”€â”€ ZombieIntro_Main
+â”œâ”€â”€ ZombieRewards_Main
+â”œâ”€â”€ ZombieTactical_Main
+â””â”€â”€ ZombieWaves_Main
+
+EASTER EGG
+â”œâ”€â”€ ZombieEE_FirstHordeTrigger
+â”œâ”€â”€ ZombieEE_PriestKeeper
+â”œâ”€â”€ ZombieEE_PriestInteraction_Main
+â”œâ”€â”€ ZombieEE_Dialogue01
+â”œâ”€â”€ ZombieEE_Sacrifice_Main
+â”œâ”€â”€ ZombieEE_AnubisAttack_Main
+â”œâ”€â”€ ZombieEE_Dialogue02
+â”œâ”€â”€ ZombieEE_Portals_Main
+â”œâ”€â”€ ZombieEE_Dialogue03
+â”œâ”€â”€ ZombieEE_Amulet_Main
+â”œâ”€â”€ ZombieEE_Dialogue04
+â”œâ”€â”€ ZombieEE_FinalAssault_Main
+â”œâ”€â”€ ZombieEE_FinalAssault_Run
+â””â”€â”€ ZombieEE_DialogueFinal
+```
+
+Cada Sequence tiene una responsabilidad concreta y se coordina con las demÃ¡s mediante:
+
+```text
+Groups
+EnvReadInt / EnvWriteInt
+RunSequence
+Conversation
+ShowAnnouncement / HideAnnouncement
+UserNotification
+```
+
+---
+
+# MecÃ¡nicas territoriales
+
+## 1. Fortalezas
 
 ### `Fortresses_Main`
 
-Convierte los Outposts culturales del mapa en **fortalezas defensivas persistentes**.
+Convierte los Outposts culturales del mapa en fortalezas defensivas persistentes.
 
-Gestiona automáticamente:
+La Sequence:
 
-* descubrimiento de fortalezas;
-* guarniciones específicas según cultura;
-* defensa automática;
-* salida y retorno de los defensores;
-* regeneración gradual de bajas;
-* bloqueo de la captura mientras la posición siga defendida;
-* cambio de propietario;
-* reconstrucción de la guarnición tras una conquista;
-* reconquistas ilimitadas.
+- detecta automÃ¡ticamente todos los Outposts culturales;
+- conserva las guarniciones neutrales originales cuando corresponde;
+- aplica tratamiento especial al `EOutpost`;
+- crea guarniciones especÃ­ficas por cultura despuÃ©s de la conquista;
+- mantiene las tropas vinculadas a la fortaleza;
+- evita que la IA estratÃ©gica se las lleve;
+- desactiva su dependencia de comida;
+- las saca a combatir cuando hay enemigos;
+- las devuelve al fortÃ­n cuando desaparece la amenaza;
+- regenera bajas progresivamente;
+- impide capturas mientras todavÃ­a existan defensores reales;
+- reconstruye la guarniciÃ³n tras cada cambio de propietario;
+- permite ciclos de reconquista ilimitados.
 
-Las guarniciones pertenecen estructuralmente a la fortaleza.
+Guarniciones estructurales actuales:
 
-No funcionan como un ejército gratuito para el jugador y no dependen de la alimentación normal.
+```text
+TOutpost â†’ 10 TValkyrie
+GOutpost â†’ 4 GTridentWarrior
+BOutpost â†’ 10 BHighlander
+IOutpost â†’ 12 ISlinger + 10 IDefender
+COutpost â†’ 24 CMacemen
+ROutpost â†’ 20 RLiberatus
+EOutpost â†’ 10 EHorusWarrior + 10 EAnubisWarrior
+```
 
-Una única Sequence administra todos los Outposts culturales del escenario.
+RegeneraciÃ³n:
 
-Documentación:
+```text
+1 baja cada 20 segundos
+sÃ³lo cuando no hay enemigos
+```
 
-[`docs/secuencias/01_Fortresses_Main_Explicacion_Detallada.md`](docs/secuencias/01_Fortresses_Main_Explicacion_Detallada.md)
+DocumentaciÃ³n:
+
+[`docs/secuencias/01_Fortresses_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/01_Fortresses_Main_Explicacion_Detallada_V2.0.md)
 
 ---
 
-## Recompensa por conquista de ciudades neutrales
+## 2. Recompensa por ciudades neutrales
 
 ### `ForumCaptureReward_Main`
 
-Las ciudades neutrales no son únicamente posiciones territoriales.
+Al comenzar la partida descubre todos los `BaseTownhall` inicialmente neutrales de:
 
-Cuando un jugador conquista por primera vez uno de los Foros neutrales definidos por el escenario, recibe una **recompensa militar asociada a su civilización**.
+```text
+Player 15
+Player 16
+```
 
-El sistema:
+Cuando uno de esos Foros es conquistado por primera vez por un Player 1-8:
 
-* descubre los Townhalls neutrales al comenzar la partida;
-* conserva su referencia aunque cambien de propietario;
-* detecta su primera conquista;
-* identifica al jugador conquistador;
-* genera dos bloques de 50 unidades;
-* entrega un total de 100 tropas;
-* marca permanentemente esa ciudad como recompensada.
+```text
+primera conquista
+â†“
+100 tropas
+â†“
+recompensa asociada a la civilizaciÃ³n del conquistador
+```
 
-A diferencia de las guarniciones de fortalezas, estas unidades son **tropas normales**:
+CaracterÃ­sticas:
 
-* consumen comida;
-* pueden recibir órdenes;
-* pueden ser utilizadas por la IA;
-* no se regeneran;
-* no quedan controladas posteriormente por la Sequence.
+- una recompensa mÃ¡xima por cada Foro inicialmente neutral;
+- unidades de nivel 12;
+- tropas normales;
+- alimentaciÃ³n normal;
+- control normal del jugador o IA;
+- creaciÃ³n en el Foro conquistado;
+- seguimiento persistente de quÃ© ciudad ya entregÃ³ su recompensa.
 
-Documentación:
+DocumentaciÃ³n:
 
-[`docs/secuencias/02_ForumCaptureReward_Main_Explicacion_Detallada.md`](docs/secuencias/02_ForumCaptureReward_Main_Explicacion_Detallada.md)
+[`docs/secuencias/02_ForumCaptureReward_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/02_ForumCaptureReward_Main_Explicacion_Detallada_V2.0.md)
 
 ---
 
-## Guard Posts
+## 3. Guard Posts
 
-### `GuardPosts_Main`
+### `GGuardPost`
 
-Los `GGuardPost` utilizan un sistema distinto al de las fortalezas convencionales.
-
-Su defensa nativa se conserva y la Sequence añade una segunda capa terrestre.
-
-Cada Guard Post combina:
+La Sequence de producciÃ³n se encuentra en la secciÃ³n/editor:
 
 ```text
-defensa nativa de sentinelas
-+
-10 guardianes terrestres
+GGuardPost
+```
+
+El comentario histÃ³rico del Source conserva el nombre antiguo:
+
+```text
+GuardPosts_Main
+```
+
+pero la documentaciÃ³n v2.0 utiliza el nombre real actual:
+
+```text
+GGuardPost
+```
+
+Cada `GGuardPost` conserva sus:
+
+```text
+12 sentinelas nativos
+```
+
+y la Sequence aÃ±ade una escolta terrestre adicional de:
+
+```text
+10 guardianes
+```
+
+segÃºn la cultura del propietario.
+
+Ejemplos:
+
+```text
+Roma Imperial â†’ 5 RHastatus + 5 RPraetorian
+Cartago       â†’ 5 CNoble + 5 CBerberAssassin
+Iberia        â†’ 5 IDefender + 5 IEliteGuard
+Galia         â†’ 5 GWomanWarrior + 5 GAxeman
+Britania      â†’ 5 BBronzeSpearman + 5 BHighlander
+Germania      â†’ 5 TMaceman + 5 THuntress
 ```
 
 Los guardianes:
 
-* dependen de la civilización del propietario;
-* permanecen ligados al puesto;
-* atacan automáticamente las amenazas cercanas;
-* regresan a la posición defensiva;
-* se regeneran progresivamente;
-* no forman parte del ejército estratégico normal de la IA.
+- permanecen fuera del Settlement;
+- no dependen de comida;
+- quedan excluidos de la IA estratÃ©gica;
+- defienden automÃ¡ticamente el puesto;
+- regresan a sus posiciones de guardia;
+- regeneran una baja cada 30 segundos en paz;
+- bloquean la captura mientras sobreviva al menos uno.
 
-Mientras sobreviva al menos uno de los guardianes añadidos, el puesto continúa protegido frente a la captura.
+DocumentaciÃ³n:
 
-Documentación:
-
-[`docs/secuencias/03_GuardPosts_Main_Explicacion_Detallada.md`](docs/secuencias/03_GuardPosts_Main_Explicacion_Detallada.md)
+[`docs/secuencias/03_GGuardPost_Explicacion_Detallada_V2.0.md`](docs/secuencias/03_GGuardPost_Explicacion_Detallada_V2.0.md)
 
 ---
 
-## Recompensas estratégicas de frontera
+## 4. Recompensas estratÃ©gicas de frontera
 
 ### `GuardPostsFrontierReward_Main`
 
-Algunas regiones del mapa están agrupadas en zonas estratégicas:
+El mapa utiliza diez zonas territoriales:
 
 ```text
 RewardZone_01
+RewardZone_02
 ...
 RewardZone_10
 ```
 
-Cada zona contiene varias posiciones territoriales.
-
-Cuando **todos los objetos de una zona pertenecen al mismo jugador**, ese jugador obtiene una recompensa estratégica.
-
-La recompensa consiste en:
+Cuando todos los objetos de una zona pertenecen al mismo Player 1-8:
 
 ```text
-2 ejércitos × 50 unidades
-=
-100 unidades
+control regional completo
+â†“
+100 tropas de recompensa
 ```
 
-La composición depende de la civilización del propietario e incluye unidades de diferentes funciones, como infantería, tropas a distancia, caballería cuando existe para esa cultura y héroes.
-
-Una misma zona puede ser recompensada a jugadores diferentes en momentos distintos, pero cada combinación:
+Cada combinaciÃ³n:
 
 ```text
 zona + jugador
 ```
 
-sólo puede cobrarla una vez.
+sÃ³lo puede cobrarse una vez.
 
-Las tropas aparecen asociadas a la capital del jugador correspondiente mediante:
+El sistema permite que una misma regiÃ³n entregue recompensa a propietarios distintos si cambia de manos durante la partida.
 
-```text
-CapitalForum_P1
-...
-CapitalForum_P8
-```
+DocumentaciÃ³n:
 
-Documentación:
-
-[`docs/secuencias/04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md`](docs/secuencias/04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md)
+[`docs/secuencias/04_GuardPostsFrontierReward_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/04_GuardPostsFrontierReward_Main_Explicacion_Detallada_V2.0.md)
 
 ---
 
-## Defensa auxiliar de Outposts
+## 5. Defensa auxiliar de Outposts
 
 ### `OutpostAuxDefense_Main`
 
-Las fortalezas pueden contener tropas normales además de su guarnición estructural.
-
-Esta Sequence permite utilizar esas tropas como **defensa auxiliar temporal**.
-
-Cuando una fortaleza es atacada:
+Las tropas normales almacenadas por un jugador dentro de un Outpost pueden actuar temporalmente como defensa auxiliar.
 
 ```text
-Fortresses_Main
-→ moviliza la guarnición estructural
+PAZ
+â†’ la Sequence no toca las tropas normales
 
-OutpostAuxDefense_Main
-→ moviliza las tropas normales almacenadas
+ATAQUE
+â†’ las tropas almacenadas salen a combatir
+
+JUGADOR DA UNA ORDEN MANUAL
+â†’ la unidad se desvincula del sistema auxiliar
+
+VUELVE A ENTRAR EN EL OUTPOST
+â†’ puede quedar vinculada de nuevo en una defensa futura
+
+FIN DE LA AMENAZA
+â†’ las auxiliares regresan al Outpost
 ```
 
-La Sequence distingue ambos grupos para evitar que dos sistemas intenten controlar las mismas unidades.
+Las tropas auxiliares:
 
-Cuando desaparece la amenaza:
+- son soldados reales del jugador;
+- consumen comida normalmente;
+- no se regeneran;
+- no forman parte de la guarniciÃ³n estructural;
+- pueden volver al control manual del jugador.
 
-1. las tropas auxiliares dejan de perseguir;
-2. regresan hacia el Outpost;
-3. tras un periodo continuo de paz reciben la orden de volver a entrar;
-4. dejan de estar controladas por la Sequence;
-5. recuperan su comportamiento normal.
+DocumentaciÃ³n:
 
-Las tropas auxiliares que mueren **no se regeneran**. Son soldados reales que el propietario decidió almacenar previamente.
-
-Documentación:
-
-[`docs/secuencias/05_OutpostAuxDefense_Main_Explicacion_Detallada.md`](docs/secuencias/05_OutpostAuxDefense_Main_Explicacion_Detallada.md)
+[`docs/secuencias/05_OutpostAuxDefense_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/05_OutpostAuxDefense_Main_Explicacion_Detallada_V2.0.md)
 
 ---
 
-# Modo Zombies
+# Modo Zombies v2.0
 
 <div align="center">
 
-<img src="secuencias/Modo%20zombie/modo%20zombies.png" alt="Modo Zombies de Imperivm III Guerra Total" width="850">
+<img src="imagenes/pantalla%20carga/Portada.png"
+     alt="Modo Zombies de Imperivm III Guerra Total"
+     width="850">
 
 </div>
 
-El **Modo Zombies** introduce una amenaza independiente que aparece durante una partida normal y obliga a las civilizaciones a enfrentarse a ejércitos controlados por scripting.
-
-Para el jugador es una sola mecánica.
-
-Internamente está dividida en tres módulos:
+La versiÃ³n 2.0 sustituye por completo la antigua arquitectura de:
 
 ```text
+40 rondas
+48 hordas
+HW_H1..HW_H48
+ZR_PENDING
+```
+
+La arquitectura canÃ³nica actual utiliza:
+
+```text
+8 frentes persistentes
+R1-R15 estructuradas
+R16+ endless
+scheduler no bloqueante
+red tÃ¡ctica de 18 nodos
+parada definitiva de nuevas hordas al cerrar 4 portales
+```
+
+Los cuatro mÃ³dulos principales son:
+
+```text
+ZombieIntro_Main
 ZombieWaves_Main
 ZombieTactical_Main
 ZombieRewards_Main
 ```
 
-## Diseño de las oleadas
+---
 
-La configuración actual está diseñada alrededor de:
+# IntroducciÃ³n Zombies
 
-| Parámetro                    |      Valor |
-| ---------------------------- | ---------: |
-| Rondas                       |         40 |
-| Preparación inicial          | 30 minutos |
-| Intervalo entre rondas       |  2 minutos |
-| Puntos posibles de aparición |          8 |
-| Player de la horda           |         12 |
-| Rondas 1-32                  |    1 horda |
-| Rondas 33-40                 |   2 hordas |
-| Máximo de hordas internas    |         48 |
+## `ZombieIntro_Main`
 
-Las composiciones aumentan progresivamente de dificultad y pueden mezclar unidades procedentes de distintas civilizaciones.
+Es la entrada narrativa y tÃ©cnica del Modo Zombies.
 
-Las unidades de la horda pertenecen siempre al **Player 12**.
+Flujo:
 
-## Generación
+```text
+vÃ­deo introductorio
+â†“
+cinemÃ¡tica en el mapa
+â†“
+mensajero cartaginÃ©s
+â†“
+comitiva romana
+â†“
+conversaciÃ³n
+â†“
+retirada de actores temporales
+â†“
+CÃ©sar permanece en el mapa
+â†“
+control vuelve al jugador
+â†“
+arranque del sistema Zombies
+```
 
-### `ZombieWaves_Main_40R_48H_FINAL_UI`
+La Sequence inicia despuÃ©s:
 
-Se encarga de:
+```text
+ZombieEE_PriestKeeper
+ZombieEE_PriestInteraction_Main
+ZombieEE_FirstHordeTrigger
+ZombieWaves_Main
+```
 
-* temporización;
-* número de ronda;
-* avisos previos;
-* selección aleatoria del punto de aparición;
-* composición de cada horda;
-* nivel de las tropas;
-* creación mediante `Place()`;
-* creación de los Groups dinámicos `HW_Hx`;
-* inicialización del estado de cada horda.
+DocumentaciÃ³n:
 
-Los puntos de aparición se definen mediante:
+[`docs/secuencias/09_ZombieIntro_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/09_ZombieIntro_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# GeneraciÃ³n de rondas
+
+## `ZombieWaves_Main`
+
+ConfiguraciÃ³n canÃ³nica:
+
+| ParÃ¡metro | Valor |
+|---|---:|
+| PreparaciÃ³n inicial | 30 minutos |
+| Player Zombies | 12 |
+| Puntos de apariciÃ³n | 8 |
+| Intervalo base tras despliegue | 2 minutos |
+| Pausa especial tras R5 | 10 minutos |
+| Pausa especial tras R10 | 10 minutos |
+| Rondas finitas | Ninguna |
+| Inicio endless | R16 |
+| Intervalo entre apariciones internas | 20 segundos |
+
+Puntos:
 
 ```text
 HordeSpawn_01
@@ -355,270 +506,1032 @@ HordeSpawn_07
 HordeSpawn_08
 ```
 
-Documentación:
+## Rondas 1-15
 
-[`docs/secuencias/08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md`](docs/secuencias/08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md)
-
----
-
-## Control táctico
-
-### `ZombieTactical_Main_v10_5_WALL_STUCK_GATE`
-
-Es el controlador táctico de las hordas.
-
-Su objetivo es que una horda no se limite a recibir una orden de movimiento, sino que pueda mantener un objetivo estratégico e intentar alcanzar una ciudad fortificada.
-
-Gestiona:
-
-* selección del Foro objetivo;
-* marcha hacia la ciudad;
-* mantenimiento del objetivo;
-* detección de bloqueos;
-* localización de Gates;
-* inicio del asedio;
-* seguimiento de máquinas de asedio;
-* detección de brecha;
-* avance tras destruir la puerta;
-* búsqueda de una posible segunda Gate;
-* presión sobre la loyalty;
-* captura del Settlement;
-* retargeting;
-* detección de destrucción de la horda;
-* preparación del evento de recompensa.
-
-Documentación:
-
-[`docs/secuencias/07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md`](docs/secuencias/07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md)
-
----
-
-## Recompensas por detener una horda
-
-### `ZombieRewards_Main_48H_40R`
-
-Cuando una horda es destruida, el sistema puede entregar tropas al jugador que haya conseguido detenerla.
-
-La Sequence de recompensas no controla el combate.
-
-Recibe del controlador táctico:
+Cada ronda usa:
 
 ```text
-jugador
-ronda
-posición del Foro
-evento pendiente
+8 apariciones
 ```
 
-y transforma esos datos en una recompensa militar.
+Cada uno de los ocho `HordeSpawn_XX` aparece:
 
-Las rondas cuentan con composiciones propias y determinadas rondas incluyen recompensas especiales.
+```text
+exactamente una vez
+```
 
-Documentación:
+en orden aleatorio.
 
-[`docs/secuencias/06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md`](docs/secuencias/06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md)
+Los grupos de seguimiento son:
+
+```text
+HW_R1
+HW_R2
+...
+HW_R15
+```
+
+## Ronda 16 y posteriores
+
+Desde R16:
+
+```text
+16 apariciones por ronda
+```
+
+Cada spawn se utiliza:
+
+```text
+exactamente 2 veces
+```
+
+La composiciÃ³n base endless contiene:
+
+```text
+50 unidades por apariciÃ³n
+```
+
+Por tanto una ronda endless normal despliega:
+
+```text
+16 Ã— 50
+=
+800 unidades
+```
+
+Los niveles progresan:
+
+```text
+R16 â†’ nivel 20
+R17 â†’ nivel 21
+R18 â†’ nivel 22
+...
+R56 â†’ nivel 60
+R57+ â†’ nivel 60
+```
+
+Cada cinco rondas a partir de R20:
+
+```text
++10 RHastatus
++10 TMaceman
+por apariciÃ³n
+```
+
+La ronda especial pasa a:
+
+```text
+70 unidades Ã— 16
+=
+1120 unidades
+```
+
+## Scheduler endless
+
+Desde R16:
+
+```text
+la siguiente ronda NO espera
+a que HW_R16 quede vacÃ­o
+```
+
+Las rondas pueden solaparse.
+
+El scheduler utiliza generaciones:
+
+```text
+ZR_ENDLESS_GENERATION
+ZR_ENDLESS_DEPLOYED_GENERATION
+ZR_ENDLESS_REWARDED_GENERATION
+```
+
+## Parada por portales
+
+`ZombieWaves_Main` comprueba periÃ³dicamente:
+
+```text
+EE_ZOMBIE_SPAWNS_DISABLED
+```
+
+Cuando el Easter Egg cierra el cuarto portal:
+
+```text
+EE_ZOMBIE_SPAWNS_DISABLED = 1
+â†“
+no se generan nuevas hordas
+â†“
+las hordas que ya existen permanecen vivas
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/08_ZombieWaves_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/08_ZombieWaves_Main_Explicacion_Detallada_V2.0.md)
 
 ---
 
-## Arquitectura interna del modo Zombies
+# IA tÃ¡ctica Zombies
+
+## `ZombieTactical_Main`
+
+La IA actual sustituye el antiguo sistema de decenas de slots independientes por:
+
+```text
+8 frentes persistentes
+```
+
+```text
+HW_H1
+HW_H2
+HW_H3
+HW_H4
+HW_H5
+HW_H6
+HW_H7
+HW_H8
+```
+
+Cada frente corresponde a uno de los ocho puntos de apariciÃ³n.
+
+## Red territorial
+
+El controlador utiliza una red fija de:
+
+```text
+18 nodos
+```
+
+correspondiente a las ciudades del mapa.
+
+La ruta se calcula mediante una estructura Dijkstra-like implementada con `IntArray`.
+
+El sistema decide:
+
+- ciudad objetivo;
+- nodo ancla;
+- siguiente nodo;
+- ruta territorial;
+- acceso a la ciudad;
+- Gate relevante;
+- fase de asedio;
+- brecha;
+- entrada;
+- captura.
+
+## Fases tÃ¡cticas
+
+```text
+0 â†’ marcha
+1 â†’ asedio
+2 â†’ avance por la brecha
+3 â†’ captura
+```
+
+## Asedio
+
+La horda:
+
+- detecta Gates;
+- utiliza `ObjList.Siege()`;
+- intenta mantener la presiÃ³n;
+- reagrupa unidades alejadas;
+- detecta progreso a travÃ©s de la brecha;
+- evita abandonar la ciudad objetivo para ir a una Gate irrelevante;
+- mantiene combates durante el avance.
+
+## Captura
+
+Cuando existe acceso al Foro:
+
+```text
+las unidades cercanas reducen loyalty
+â†“
+al llegar al umbral
+â†“
+Player 12 toma temporalmente la ciudad
+```
+
+El sistema puede continuar desde esa nueva posiciÃ³n hacia otro objetivo.
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/07_ZombieTactical_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/07_ZombieTactical_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Recompensas Zombies
+
+## `ZombieRewards_Main`
+
+La arquitectura actual separa dos sistemas.
+
+## R1-R15
+
+La recompensa se entrega cuando:
+
+```text
+HW_RN
+queda completamente vacÃ­o
+```
+
+Cada ronda sÃ³lo puede pagarse una vez.
+
+## R16+
+
+Las generaciones endless no esperan a morir completamente.
+
+La recompensa se activa cuando:
+
+```text
+el despliegue completo de la generaciÃ³n
+ha sido confirmado
+```
+
+mediante:
+
+```text
+ZR_ENDLESS_DEPLOYED_GENERATION
+```
+
+y queda protegida contra duplicados mediante:
+
+```text
+ZR_ENDLESS_REWARDED_GENERATION
+```
+
+## Destinatarios
+
+El sistema utiliza la mÃ¡scara de propietarios publicada por Tactical.
+
+Si ningÃºn frente ha publicado propietario vÃ¡lido, existe un fallback sobre Players 1-8 que todavÃ­a posean un `BaseTownhall`.
+
+## Recompensa endless
+
+Desde R16:
+
+```text
+28 tropas
+```
+
+por jugador recompensado.
+
+Nivel:
+
+```text
+20 + (ronda - 16)
+mÃ¡ximo 60
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/06_ZombieRewards_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/06_ZombieRewards_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Arquitectura actual del Modo Zombies
 
 ```mermaid
 flowchart TD
-    A[ZombieWaves_Main] --> B[Crear horda]
-    B --> C[HW_Hx]
-    C --> D[ZombieTactical_Main]
+    INTRO[ZombieIntro_Main] --> WAVES[ZombieWaves_Main]
+    INTRO --> TRIGGER[ZombieEE_FirstHordeTrigger]
+    INTRO --> PRIEST[ZombieEE_PriestInteraction_Main]
 
-    D --> E[Seleccionar ciudad]
-    E --> F[Marcha]
-    F --> G[Asedio]
-    G --> H[Brecha]
-    H --> I[Captura]
+    WAVES --> FRONTS[HW_H1..HW_H8]
+    FRONTS --> TACTICAL[ZombieTactical_Main]
 
-    D --> J{Horda destruida}
-    J --> K[ZR_PENDINGx]
-    K --> L[ZombieRewards_Main]
-    L --> M[Recompensa militar]
+    TACTICAL --> ROUTE[Red territorial de 18 nodos]
+    ROUTE --> MARCH[Marcha]
+    MARCH --> SIEGE[Asedio]
+    SIEGE --> BREACH[Brecha]
+    BREACH --> CAPTURE[Captura]
+
+    WAVES --> REWARDS[ZombieRewards_Main]
+    TACTICAL --> REWARDS
+
+    PORTALS[4 portales cerrados] --> STOP[EE_ZOMBIE_SPAWNS_DISABLED]
+    STOP --> WAVES
 ```
-
-Los tres módulos utilizan estado compartido, pero mantienen responsabilidades separadas.
 
 ---
 
-# Arquitectura general
+# Easter Egg â€” El Eclipse de Anubis
 
-El escenario puede resumirse conceptualmente así:
+La versiÃ³n 2.0 incorpora un Easter Egg completo integrado dentro del Modo Zombies.
+
+No es una mecÃ¡nica separada del mapa.
+
+Utiliza:
+
+```text
+CÃ©sar
+sacerdote egipcio
+sacrificio de aldeanos
+Guerreros de Anubis
+ocho portales
+Gem of Power
+campamento cartaginÃ©s
+asalto final
+diÃ¡logo final
+recompensas especiales
+```
+
+El flujo general es:
+
+```text
+primera mini-horda de HordeSpawn_01 destruida
+â†“
+Dialogue01
+â†“
+50 aldeanos sacrificados
+â†“
+50 Guerreros de Anubis
+â†“
+Dialogue02
+â†“
+cerrar 4 de 8 portales
+â†“
+se detienen nuevas hordas Zombies
+â†“
+Dialogue03
+â†“
+campamento cartaginÃ©s / Gem of Power
+â†“
+Dialogue04
+â†“
+sacerdote desaparece
+â†“
+asalto final de 200 enemigos
+â†“
+sacerdote reaparece
+â†“
+DialogueFinal
+â†“
+recompensa final
+```
+
+---
+
+# Primera activaciÃ³n
+
+## `ZombieEE_FirstHordeTrigger`
+
+Durante R1, las unidades creadas especÃ­ficamente desde:
+
+```text
+HordeSpawn_01
+```
+
+tambiÃ©n se registran en:
+
+```text
+EE_FirstHorde_Spawn01
+```
+
+Cuando esa mini-horda ha terminado de generarse y todos sus miembros han muerto:
+
+```text
+EE_PRIEST_PENDING = 1
+```
+
+CÃ©sar debe regresar fÃ­sicamente al sacerdote.
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/10_ZombieEE_FirstHordeTrigger_Explicacion_Detallada_V2.0.md`](docs/secuencias/10_ZombieEE_FirstHordeTrigger_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Sacerdote persistente
+
+## `ZombieEE_PriestKeeper`
+
+Mantiene al sacerdote:
+
+```text
+SetNoAIFlag(true)
+SetFeeding(false)
+SetHealth(1000)
+```
+
+y lo devuelve a su posiciÃ³n de origen si se aleja.
+
+Durante el asalto final:
+
+```text
+EE_PRIEST_HIDDEN = 1
+```
+
+permite que el sacerdote desaparezca temporalmente sin que PriestKeeper intente recuperarlo.
+
+Cuando reaparece:
+
+```text
+EE_PRIEST_HIDDEN = 0
+```
+
+y vuelve a ser protegido.
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/11_ZombieEE_PriestKeeper_Explicacion_Detallada_V2.0.md`](docs/secuencias/11_ZombieEE_PriestKeeper_Explicacion_Detallada_V2.0.md)
+
+---
+
+# InteracciÃ³n presencial
+
+## `ZombieEE_PriestInteraction_Main`
+
+Toda la narrativa utiliza una Ãºnica variable:
+
+```text
+EE_PRIEST_PENDING
+```
+
+Mapa actual:
+
+```text
+1 â†’ ZombieEE_Dialogue01
+2 â†’ ZombieEE_Dialogue02
+3 â†’ ZombieEE_Dialogue03
+4 â†’ ZombieEE_Dialogue04
+5 â†’ ZombieEE_DialogueFinal
+```
+
+Cuando existe un diÃ¡logo pendiente:
+
+```text
+VE A HABLAR CON EL SACERDOTE EGIPCIO
+```
+
+se recuerda aproximadamente cada 15 segundos.
+
+El diÃ¡logo sÃ³lo comienza cuando:
+
+```text
+CÃ©sar <= 180
+```
+
+del sacerdote.
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/12_ZombieEE_PriestInteraction_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/12_ZombieEE_PriestInteraction_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Dialogue01 â€” Las cincuenta almas
+
+## `ZombieEE_Dialogue01`
+
+DespuÃ©s de la primera visita al sacerdote:
+
+```text
+EE_SACRIFICE_ENABLED = 1
+â†“
+RunSequence("ZombieEE_Sacrifice_Main")
+```
+
+Objetivo:
+
+```text
+CONDUCE 50 ALDEANOS HASTA LAS PIRAMIDES
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/13_ZombieEE_Dialogue01_Explicacion_Detallada_V2.0.md`](docs/secuencias/13_ZombieEE_Dialogue01_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Sacrificio
+
+## `ZombieEE_Sacrifice_Main`
+
+La Sequence detecta aldeanos vÃ¡lidos alrededor de:
+
+```text
+ZombieEE_SacrificePyramids
+```
+
+y cuenta las almas entregadas.
+
+Objetivo:
+
+```text
+50 aldeanos
+```
+
+Al completar el sacrificio:
+
+```text
+EE_SACRIFICE_COMPLETED = 1
+â†“
+RunSequence("ZombieEE_AnubisAttack_Main")
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/14_ZombieEE_Sacrifice_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/14_ZombieEE_Sacrifice_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Ataque de Anubis
+
+## `ZombieEE_AnubisAttack_Main`
+
+DespuÃ©s del sacrificio aparecen:
+
+```text
+50 EAnubisWarrior
+nivel 40
+Player 12
+```
+
+desde:
+
+```text
+HordeSpawn_01
+```
+
+Todos pertenecen al Group:
+
+```text
+EE_AnubisWave01
+```
+
+y avanzan hacia:
+
+```text
+CapitalForum_P1
+```
+
+Cuando todos mueren:
+
+```text
+EE_ANUBIS_ATTACK_COMPLETED = 1
+EE_PRIEST_PENDING = 2
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/15_ZombieEE_AnubisAttack_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/15_ZombieEE_AnubisAttack_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Dialogue02 â€” Los portales
+
+## `ZombieEE_Dialogue02`
+
+La segunda conversaciÃ³n activa:
+
+```text
+EE_PORTALS_ENABLED = 1
+```
+
+e inicia:
+
+```text
+ZombieEE_Portals_Main
+```
+
+Objetivo:
+
+```text
+CIERRA 4 PORTALES CUALESQUIERA
+CON SACERDOTES ROMANOS
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/16_ZombieEE_Dialogue02_Explicacion_Detallada_V2.0.md`](docs/secuencias/16_ZombieEE_Dialogue02_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Los ocho portales
+
+## `ZombieEE_Portals_Main`
+
+Los propios:
+
+```text
+HordeSpawn_01..08
+```
+
+funcionan tambiÃ©n como posiciones de portal.
+
+Un portal abierto se activa cuando un:
+
+```text
+RPriest de Player 1
+```
+
+entra a:
+
+```text
+<=220
+```
+
+del punto.
+
+Cada portal genera:
+
+```text
+10 EAnubisWarrior
+10 EHorusWarrior
+nivel 20
+Player 12
+```
+
+Cuando mueren los 20 guardianes:
+
+```text
+el portal queda cerrado
+```
+
+y Player 1 recibe dentro de `CapitalForum_P1`:
+
+```text
+20 RPraetorian
+15 RHastatus
+15 RArcher
+nivel 25
+```
+
+SÃ³lo es necesario cerrar:
+
+```text
+4 de los 8 portales
+```
+
+en cualquier orden.
+
+Al registrar el cuarto cierre:
+
+```text
+EE_ZOMBIE_SPAWNS_DISABLED = 1
+```
+
+Las nuevas hordas Zombies dejan de aparecer.
+
+DespuÃ©s:
+
+```text
+EE_PRIEST_PENDING = 3
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/17_ZombieEE_Portals_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/17_ZombieEE_Portals_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Dialogue03 â€” Gem of Power
+
+## `ZombieEE_Dialogue03`
+
+DespuÃ©s de cerrar los cuatro portales necesarios:
+
+```text
+EE_PORTAL_PHASE_FINISHED = 1
+EE_AMULET_HUNT_ENABLED = 1
+â†“
+RunSequence("ZombieEE_Amulet_Main")
+```
+
+Objetivo:
+
+```text
+ATACA EL CAMPAMENTO DEL SUR
+Y RECUPERA GEM OF POWER
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/18_ZombieEE_Dialogue03_Explicacion_Detallada_V2.0.md`](docs/secuencias/18_ZombieEE_Dialogue03_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Campamento cartaginÃ©s
+
+## `ZombieEE_Amulet_Main`
+
+La implementaciÃ³n v2.0 simplifica la antigua idea de transportar fÃ­sicamente un objeto de inventario.
+
+La mecÃ¡nica actual es:
+
+```text
+aparece un campamento cartaginÃ©s
+â†“
+aparece un caudillo CHero1 con su ejÃ©rcito
+â†“
+el jugador debe matar al caudillo
+â†“
+la fase queda completada
+â†“
+EE_PRIEST_PENDING = 4
+```
+
+No existe una Gem of Power fÃ­sica que el jugador tenga que transportar manualmente.
+
+La Gem of Power funciona como elemento narrativo asociado a la derrota del caudillo.
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/19_ZombieEE_Amulet_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/19_ZombieEE_Amulet_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Dialogue04 â€” El sacerdote parte hacia Egipto
+
+## `ZombieEE_Dialogue04`
+
+DespuÃ©s de completar la fase del caudillo:
+
+```text
+ZombieEE_Conv04
+â†“
+guardar posiciÃ³n y propietario del sacerdote
+â†“
+EE_PRIEST_HIDDEN = 1
+â†“
+RemoveFromGroup("ZombieEE_Priest01")
+â†“
+Erase()
+â†“
+el sacerdote desaparece
+```
+
+DespuÃ©s prepara:
+
+```text
+EE_FINAL_ASSAULT_ENABLED = 1
+EE_FINAL_ASSAULT_STARTED = 0
+EE_FINAL_ASSAULT_COMPLETED = 0
+EE_FINAL_BATCH_DEPLOYED = 0
+```
+
+y lanza expresamente:
+
+```text
+ZombieEE_FinalAssault_Run
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/20_ZombieEE_Dialogue04_Explicacion_Detallada_V2.0.md`](docs/secuencias/20_ZombieEE_Dialogue04_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Asalto final histÃ³rico
+
+## `ZombieEE_FinalAssault_Main`
+
+La compilaciÃ³n v2.0 conserva esta Sequence porque contiene la implementaciÃ³n histÃ³rica completa del asalto final.
+
+Sin embargo:
+
+```text
+NO es el punto de entrada utilizado actualmente
+```
+
+`ZombieEE_Dialogue04` lanza:
+
+```text
+ZombieEE_FinalAssault_Run
+```
+
+La documentaciÃ³n de `FinalAssault_Main` se conserva como referencia tÃ©cnica e histÃ³rica.
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/21_ZombieEE_FinalAssault_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/21_ZombieEE_FinalAssault_Main_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Asalto final activo
+
+## `ZombieEE_FinalAssault_Run`
+
+Es el asalto final realmente utilizado en v2.0.
+
+ConfiguraciÃ³n:
+
+```text
+8 tandas
+Ã—
+25 enemigos
+=
+200 atacantes
+```
+
+Niveles:
+
+```text
+Tanda 1 â†’ 20
+Tanda 2 â†’ 26
+Tanda 3 â†’ 32
+Tanda 4 â†’ 38
+Tanda 5 â†’ 44
+Tanda 6 â†’ 50
+Tanda 7 â†’ 55
+Tanda 8 â†’ 60
+```
+
+Intervalo:
+
+```text
+20 segundos entre tandas
+```
+
+Todos los enemigos:
+
+```text
+Player 12
+Group EE_FinalAssault
+SetFeeding(false)
+SetNoAIFlag(true)
+advance â†’ CapitalForum_P1
+```
+
+El sistema no utiliza:
+
+```text
+HW_H1..8
+ZombieTactical_Main
+orden capture
+```
+
+Cuando mueren todos:
+
+```text
+recrear EPriest
+â†“
+AddToGroup("ZombieEE_Priest01")
+â†“
+EE_PRIEST_HIDDEN = 0
+â†“
+EE_FINAL_ASSAULT_COMPLETED = 1
+â†“
+EE_FINAL_ASSAULT_ENABLED = 0
+â†“
+EE_PRIEST_PENDING = 5
+```
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/22_ZombieEE_FinalAssault_Run_Explicacion_Detallada_V2.0.md`](docs/secuencias/22_ZombieEE_FinalAssault_Run_Explicacion_Detallada_V2.0.md)
+
+---
+
+# DiÃ¡logo final
+
+## `ZombieEE_DialogueFinal`
+
+DespuÃ©s de la Ãºltima visita al sacerdote:
+
+```text
+ZombieEE_ConvFinal
+```
+
+cierra narrativamente el Easter Egg.
+
+La Sequence:
+
+- revela la conspiraciÃ³n de Egipto y Cartago;
+- procesa al sacerdote;
+- entrega las recompensas finales;
+- marca el Easter Egg como terminado;
+- deja cerrada la cadena narrativa.
+
+DocumentaciÃ³n:
+
+[`docs/secuencias/23_ZombieEE_DialogueFinal_Explicacion_Detallada_V2.0.md`](docs/secuencias/23_ZombieEE_DialogueFinal_Explicacion_Detallada_V2.0.md)
+
+---
+
+# Arquitectura completa del Easter Egg
 
 ```mermaid
-flowchart LR
-    MAPA[Mapa estratégico]
+flowchart TD
+    A[R1 / HordeSpawn_01 destruida] --> B[FirstHordeTrigger]
+    B --> C[Pending 1]
+    C --> D[Dialogue01]
 
-    MAPA --> FORT[Fortalezas]
-    MAPA --> GP[Guard Posts]
-    MAPA --> FORUM[Ciudades neutrales]
-    MAPA --> ZONE[Zonas territoriales]
-    MAPA --> ZOMBIE[Modo Zombies]
+    D --> E[Sacrifice_Main]
+    E --> F[50 aldeanos]
+    F --> G[AnubisAttack]
+    G --> H[50 Anubis derrotados]
 
-    FORT --> FMAIN[Fortresses_Main]
-    FORT --> AUX[OutpostAuxDefense_Main]
+    H --> I[Pending 2]
+    I --> J[Dialogue02]
 
-    GP --> GPMAIN[GuardPosts_Main]
+    J --> K[Portals_Main]
+    K --> L[4 de 8 portales]
+    L --> M[Detener nuevas hordas]
 
-    FORUM --> FCR[ForumCaptureReward_Main]
+    M --> N[Pending 3]
+    N --> O[Dialogue03]
 
-    ZONE --> GFR[GuardPostsFrontierReward_Main]
+    O --> P[Amulet_Main]
+    P --> Q[Caudillo cartaginÃ©s derrotado]
 
-    ZOMBIE --> ZW[ZombieWaves]
-    ZOMBIE --> ZT[ZombieTactical]
-    ZOMBIE --> ZR[ZombieRewards]
+    Q --> R[Pending 4]
+    R --> S[Dialogue04]
+
+    S --> T[Sacerdote desaparece]
+    T --> U[FinalAssault_Run]
+    U --> V[200 enemigos derrotados]
+
+    V --> W[Sacerdote reaparece]
+    W --> X[Pending 5]
+    X --> Y[DialogueFinal]
+    Y --> Z[Easter Egg completado]
 ```
 
 ---
 
-# Estructura del repositorio
+# DocumentaciÃ³n de Sequences
+
+La documentaciÃ³n v2.0 queda organizada asÃ­:
+
+| NÂº | Sequence | Documento |
+|---:|---|---|
+| 01 | `Fortresses_Main` | [`01_Fortresses_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/01_Fortresses_Main_Explicacion_Detallada_V2.0.md) |
+| 02 | `ForumCaptureReward_Main` | [`02_ForumCaptureReward_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/02_ForumCaptureReward_Main_Explicacion_Detallada_V2.0.md) |
+| 03 | `GGuardPost` | [`03_GGuardPost_Explicacion_Detallada_V2.0.md`](docs/secuencias/03_GGuardPost_Explicacion_Detallada_V2.0.md) |
+| 04 | `GuardPostsFrontierReward_Main` | [`04_GuardPostsFrontierReward_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/04_GuardPostsFrontierReward_Main_Explicacion_Detallada_V2.0.md) |
+| 05 | `OutpostAuxDefense_Main` | [`05_OutpostAuxDefense_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/05_OutpostAuxDefense_Main_Explicacion_Detallada_V2.0.md) |
+| 06 | `ZombieRewards_Main` | [`06_ZombieRewards_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/06_ZombieRewards_Main_Explicacion_Detallada_V2.0.md) |
+| 07 | `ZombieTactical_Main` | [`07_ZombieTactical_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/07_ZombieTactical_Main_Explicacion_Detallada_V2.0.md) |
+| 08 | `ZombieWaves_Main` | [`08_ZombieWaves_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/08_ZombieWaves_Main_Explicacion_Detallada_V2.0.md) |
+| 09 | `ZombieIntro_Main` | [`09_ZombieIntro_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/09_ZombieIntro_Main_Explicacion_Detallada_V2.0.md) |
+| 10 | `ZombieEE_FirstHordeTrigger` | [`10_ZombieEE_FirstHordeTrigger_Explicacion_Detallada_V2.0.md`](docs/secuencias/10_ZombieEE_FirstHordeTrigger_Explicacion_Detallada_V2.0.md) |
+| 11 | `ZombieEE_PriestKeeper` | [`11_ZombieEE_PriestKeeper_Explicacion_Detallada_V2.0.md`](docs/secuencias/11_ZombieEE_PriestKeeper_Explicacion_Detallada_V2.0.md) |
+| 12 | `ZombieEE_PriestInteraction_Main` | [`12_ZombieEE_PriestInteraction_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/12_ZombieEE_PriestInteraction_Main_Explicacion_Detallada_V2.0.md) |
+| 13 | `ZombieEE_Dialogue01` | [`13_ZombieEE_Dialogue01_Explicacion_Detallada_V2.0.md`](docs/secuencias/13_ZombieEE_Dialogue01_Explicacion_Detallada_V2.0.md) |
+| 14 | `ZombieEE_Sacrifice_Main` | [`14_ZombieEE_Sacrifice_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/14_ZombieEE_Sacrifice_Main_Explicacion_Detallada_V2.0.md) |
+| 15 | `ZombieEE_AnubisAttack_Main` | [`15_ZombieEE_AnubisAttack_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/15_ZombieEE_AnubisAttack_Main_Explicacion_Detallada_V2.0.md) |
+| 16 | `ZombieEE_Dialogue02` | [`16_ZombieEE_Dialogue02_Explicacion_Detallada_V2.0.md`](docs/secuencias/16_ZombieEE_Dialogue02_Explicacion_Detallada_V2.0.md) |
+| 17 | `ZombieEE_Portals_Main` | [`17_ZombieEE_Portals_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/17_ZombieEE_Portals_Main_Explicacion_Detallada_V2.0.md) |
+| 18 | `ZombieEE_Dialogue03` | [`18_ZombieEE_Dialogue03_Explicacion_Detallada_V2.0.md`](docs/secuencias/18_ZombieEE_Dialogue03_Explicacion_Detallada_V2.0.md) |
+| 19 | `ZombieEE_Amulet_Main` | [`19_ZombieEE_Amulet_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/19_ZombieEE_Amulet_Main_Explicacion_Detallada_V2.0.md) |
+| 20 | `ZombieEE_Dialogue04` | [`20_ZombieEE_Dialogue04_Explicacion_Detallada_V2.0.md`](docs/secuencias/20_ZombieEE_Dialogue04_Explicacion_Detallada_V2.0.md) |
+| 21 | `ZombieEE_FinalAssault_Main` | [`21_ZombieEE_FinalAssault_Main_Explicacion_Detallada_V2.0.md`](docs/secuencias/21_ZombieEE_FinalAssault_Main_Explicacion_Detallada_V2.0.md) |
+| 22 | `ZombieEE_FinalAssault_Run` | [`22_ZombieEE_FinalAssault_Run_Explicacion_Detallada_V2.0.md`](docs/secuencias/22_ZombieEE_FinalAssault_Run_Explicacion_Detallada_V2.0.md) |
+| 23 | `ZombieEE_DialogueFinal` | [`23_ZombieEE_DialogueFinal_Explicacion_Detallada_V2.0.md`](docs/secuencias/23_ZombieEE_DialogueFinal_Explicacion_Detallada_V2.0.md) |
+
+---
+
+# Manual tÃ©cnico
+
+El manual central actualizado del proyecto es:
+
+[`docs/manual/Imperivm_III_Manual_Ingenieria_Inversa_V2.0_Actualizado.md`](docs/manual/Imperivm_III_Manual_Ingenieria_Inversa_V2.0_Actualizado.md)
+
+Documenta, entre otros temas:
+
+- CKS/VS y Sequences;
+- `Obj`, `Unit`, `Building` y `Settlement`;
+- Queries y `ObjList`;
+- `Place()`;
+- Groups estÃ¡ticos y dinÃ¡micos;
+- `EnvReadInt()` / `EnvWriteInt()`;
+- `IntArray`;
+- `SetNoAIFlag()`;
+- `SetFeeding()`;
+- captura y loyalty;
+- Townhalls;
+- Outposts;
+- `GGuardPost`;
+- Gates;
+- `ObjList.Siege()`;
+- catapultas y `RamUnit`;
+- AI Helpers;
+- `RunSequence()`;
+- `Conversation`;
+- cinematogrÃ¡ficas;
+- `PlayMovie()`;
+- control de cÃ¡mara;
+- anuncios;
+- `UserNotification`;
+- `Unit.AddItem`;
+- estado compartido;
+- mÃ¡quinas de estados;
+- arquitectura tÃ©cnica del Modo Zombies v2.0;
+- arquitectura del Easter Egg.
+
+---
+
+# Groups manuales principales
+
+## Estado global / capital
 
 ```text
-Imperivm-III-Guerra-Total/
-│
-├── README.md
-├── .gitignore
-│
-├── docs/
-│   ├── manual/
-│   │   └── Imperivm_III_Manual_Ingenieria_Inversa.md
-│   │
-│   └── secuencias/
-│       ├── 01_Fortresses_Main_Explicacion_Detallada.md
-│       ├── 02_ForumCaptureReward_Main_Explicacion_Detallada.md
-│       ├── 03_GuardPosts_Main_Explicacion_Detallada.md
-│       ├── 04_GuardPostsFrontierReward_Main_Explicacion_Detallada.md
-│       ├── 05_OutpostAuxDefense_Main_Explicacion_Detallada.md
-│       ├── 06_ZombieRewards_Main_48H_40R_Explicacion_Detallada.md
-│       ├── 07_ZombieTactical_Main_v10_5_Explicacion_Detallada.md
-│       └── 08_ZombieWaves_Main_40R_48H_FINAL_UI_Explicacion_Detallada.md
-│
-├── mapa/
-│   ├── Mapa Nodos.png
-│   ├── Mapa desde Editor.jpg
-│   └── Mapa.jpg
-│
-└── secuencias/
-    ├── Fortresses_Main.vs
-    ├── ForumCaptureReward_Main.vs
-    ├── GuardPostsFrontierReward_Main.vs
-    ├── GuardPosts_Main.vs
-    ├── OutpostAuxDefense_Main.vs
-    │
-    └── Modo zombie/
-        ├── modo zombies.png
-        ├── ZombieRewards_Main_48H_40R.vs
-        ├── ZombieTactical_Main_v10_5_WALL_STUCK_GATE.vs
-        └── ZombieWaves_Main_40R_48H_FINAL_UI.vs
+CapitalForum_P1
 ```
 
----
+Es ademÃ¡s el objeto de estado compartido principal del Modo Zombies y del Easter Egg.
 
-# Documentación
-
-## Manual técnico
-
-El manual central del proyecto documenta el lenguaje de scripting utilizado por el juego y los resultados de la ingeniería inversa:
-
-[`docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md`](docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md)
-
-Incluye, entre otros temas:
-
-* CKS/VS y Sequences;
-* Groups;
-* `Obj`, `Unit`, `Building` y `Settlement`;
-* Queries y `ObjList`;
-* `Place()`;
-* `SetPlayer()`;
-* `SetFeeding()`;
-* `SetNoAIFlag()`;
-* `ForceAddUnit()`;
-* órdenes de unidades;
-* Outposts;
-* Guard Posts;
-* loyalty y captura;
-* creación dinámica;
-* IA;
-* Townhalls;
-* arquitectura de fortalezas;
-* patrones de escenarios oficiales;
-* seguimiento de hordas;
-* análisis del motor.
-
-## Documentación de Sequences
-
-Cada Sequence de producción dispone de un documento independiente donde se explica:
-
-* qué hace;
-* qué objetos controla;
-* qué hay que preparar en el editor;
-* qué Groups necesita;
-* qué estado persiste;
-* cómo funciona internamente;
-* qué dependencias tiene;
-* qué limitaciones presenta.
-
-Consulta:
-
-[Abrir documentación de Sequences](docs/secuencias/)
-
-## Investigación e ingeniería inversa
-
-La investigación técnica que sirve de base al proyecto se ha consolidado en el manual principal:
-
-[`docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md`](docs/manual/Imperivm_III_Manual_Ingenieria_Inversa.md)
-
-El manual reúne los descubrimientos obtenidos mediante análisis de scripts nativos, escenarios oficiales, pruebas directas en el editor e ingeniería inversa del motor.
-
----
-
-# Instalación y uso
-
-Este proyecto utiliza el editor de escenarios de Imperivm III y Sequences `.vs`.
-
-La configuración exacta depende de cada sistema.
-
-## Sequences principales
-
-En:
-
-```text
-Scenario
-└── Map
-    └── Sequences
-```
-
-deben existir las Sequences que se quieran utilizar.
-
-Para los controladores principales:
-
-```text
-Autorun allowed = activado
-```
-
-Después:
-
-1. abrir `Source`;
-2. introducir el contenido del `.vs` correspondiente;
-3. compilar;
-4. corregir cualquier error indicado por el editor;
-5. guardar el escenario;
-6. probar el comportamiento en partida.
-
-La documentación individual de cada Sequence contiene los requisitos exactos.
-
----
-
-## Groups manuales importantes
-
-No todos los sistemas necesitan Groups manuales.
-
-Los principales utilizados por la configuración actual son:
-
-### Capitales
+Las recompensas territoriales utilizan tambiÃ©n:
 
 ```text
 CapitalForum_P1
@@ -631,9 +1544,28 @@ CapitalForum_P7
 CapitalForum_P8
 ```
 
-Cada uno debe apuntar al Foro capital correspondiente cuando la mecánica que lo utiliza esté activa.
+segÃºn la mecÃ¡nica.
 
-### Modo Zombies
+---
+
+## Reward Zones
+
+```text
+RewardZone_01
+RewardZone_02
+RewardZone_03
+RewardZone_04
+RewardZone_05
+RewardZone_06
+RewardZone_07
+RewardZone_08
+RewardZone_09
+RewardZone_10
+```
+
+---
+
+## Spawns Zombies / Portales
 
 ```text
 HordeSpawn_01
@@ -646,174 +1578,407 @@ HordeSpawn_07
 HordeSpawn_08
 ```
 
-### Recompensas territoriales
+Los ocho puntos cumplen doble funciÃ³n:
 
 ```text
-RewardZone_01
-RewardZone_02
-...
-RewardZone_10
+spawns de Zombies
++
+portales del Easter Egg
 ```
 
-Los Groups dinámicos como:
+---
+
+## Personajes del Easter Egg
+
+```text
+ZombieEE_Caesar
+ZombieEE_Priest01
+```
+
+---
+
+## Zona de sacrificio
+
+```text
+ZombieEE_SacrificePyramids
+```
+
+---
+
+# Groups dinÃ¡micos importantes
+
+Estos Groups son gestionados por las Sequences y no deben poblarse manualmente como ejÃ©rcitos iniciales.
+
+## Fortalezas
 
 ```text
 __FRT_X_Y
 __FRT_AUX_X_Y
-__GP_X_Y
-HW_H1
-...
-HW_H48
 ```
-
-son gestionados por las Sequences y **no deben poblarse manualmente**.
 
 ---
 
-# Estado del proyecto
+## Guard Posts
 
-El proyecto continúa en desarrollo activo.
+```text
+__GP_X_Y
+```
 
-| Sistema                      | Estado                     |
-| ---------------------------- | -------------------------- |
-| Mapa estratégico             | Diseñado y documentado     |
-| Sistema de fortalezas        | Implementado               |
-| Recompensa por Foro neutral  | Implementada               |
-| Guard Posts                  | Implementado               |
-| Recompensas de frontera      | Implementadas              |
-| Defensa auxiliar de Outposts | Implementada               |
-| Generación de hordas Zombies | Funcional                  |
-| Recompensas Zombies          | Implementadas              |
-| IA táctica Zombies           | En desarrollo y validación |
-| Asedio automático Zombies    | En desarrollo              |
-| Navegación tras brecha       | En desarrollo              |
-| Documentación de scripting   | Activa y en expansión      |
+---
+
+## Frentes Zombies
+
+```text
+HW_H1
+HW_H2
+HW_H3
+HW_H4
+HW_H5
+HW_H6
+HW_H7
+HW_H8
+```
+
+---
+
+## Rondas Zombies
+
+```text
+HW_R1
+...
+HW_R15
+HW_R16
+```
+
+`HW_R16` actÃºa como Group compartido para las rondas endless, pero no se utiliza para bloquear el scheduler.
+
+---
+
+## Easter Egg
+
+```text
+EE_FirstHorde_Spawn01
+EE_AnubisWave01
+EE_PortalGuardiansActive
+EE_PortalRewards
+ZombieEE_AmuletArmy
+ZombieEE_AmuletCarrier
+EE_FinalAssault
+ZombieEE_FinalRewards
+ZombieEE_Prisoner
+```
+
+---
+
+# Autorun y orquestaciÃ³n
+
+No todas las Sequences deben configurarse con Autorun.
+
+## Autorun principal
+
+Los sistemas persistentes de producciÃ³n incluyen:
+
+```text
+Fortresses_Main
+ForumCaptureReward_Main
+GGuardPost
+GuardPostsFrontierReward_Main
+OutpostAuxDefense_Main
+ZombieIntro_Main
+ZombieRewards_Main
+ZombieTactical_Main
+```
+
+## Lanzamiento diferido
+
+El resto del flujo Zombies / Easter Egg se orquesta mediante:
+
+```text
+RunSequence()
+```
+
+Especialmente:
+
+```text
+ZombieWaves_Main
+ZombieEE_FirstHordeTrigger
+ZombieEE_PriestKeeper
+ZombieEE_PriestInteraction_Main
+ZombieEE_Dialogue01
+ZombieEE_Sacrifice_Main
+ZombieEE_AnubisAttack_Main
+ZombieEE_Dialogue02
+ZombieEE_Portals_Main
+ZombieEE_Dialogue03
+ZombieEE_Amulet_Main
+ZombieEE_Dialogue04
+ZombieEE_FinalAssault_Run
+ZombieEE_DialogueFinal
+```
+
+`ZombieEE_FinalAssault_Main` se conserva como implementaciÃ³n histÃ³rica, pero no es el punto de entrada utilizado por Dialogue04.
+
+---
+
+# Estructura recomendada del repositorio
+
+```text
+Imperivm-III-Guerra-Total/
+â”‚
+â”œâ”€â”€ README.md
+â”œâ”€â”€ .gitignore
+â”‚
+â”œâ”€â”€ docs/
+â”‚   â”œâ”€â”€ manual/
+â”‚   â”‚   â””â”€â”€ Imperivm_III_Manual_Ingenieria_Inversa_V2.0_Actualizado.md
+â”‚   â”‚
+â”‚   â””â”€â”€ secuencias/
+â”‚       â”œâ”€â”€ 01_Fortresses_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 02_ForumCaptureReward_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 03_GGuardPost_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 04_GuardPostsFrontierReward_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 05_OutpostAuxDefense_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 06_ZombieRewards_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 07_ZombieTactical_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 08_ZombieWaves_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 09_ZombieIntro_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 10_ZombieEE_FirstHordeTrigger_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 11_ZombieEE_PriestKeeper_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 12_ZombieEE_PriestInteraction_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 13_ZombieEE_Dialogue01_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 14_ZombieEE_Sacrifice_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 15_ZombieEE_AnubisAttack_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 16_ZombieEE_Dialogue02_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 17_ZombieEE_Portals_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 18_ZombieEE_Dialogue03_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 19_ZombieEE_Amulet_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 20_ZombieEE_Dialogue04_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 21_ZombieEE_FinalAssault_Main_Explicacion_Detallada_V2.0.md
+â”‚       â”œâ”€â”€ 22_ZombieEE_FinalAssault_Run_Explicacion_Detallada_V2.0.md
+â”‚       â””â”€â”€ 23_ZombieEE_DialogueFinal_Explicacion_Detallada_V2.0.md
+â”‚
+â”œâ”€â”€ mapa/
+â”‚   â”œâ”€â”€ MapaNodos.png
+â”‚   â”œâ”€â”€ Mapa desde Editor.jpg
+â”‚   â””â”€â”€ Mapa.jpg
+â”‚
+â””â”€â”€ secuencias/
+    â”œâ”€â”€ Fortresses_Main.vs
+    â”œâ”€â”€ ForumCaptureReward_Main.vs
+    â”œâ”€â”€ GGuardPost.vs
+    â”œâ”€â”€ GuardPostsFrontierReward_Main.vs
+    â”œâ”€â”€ OutpostAuxDefense_Main.vs
+    â””â”€â”€ Modo zombie/
+        â”œâ”€â”€ modo zombies.png
+        â”œâ”€â”€ ZombieIntro_Main.vs
+        â”œâ”€â”€ ZombieRewards_Main.vs
+        â”œâ”€â”€ ZombieTactical_Main.vs
+        â”œâ”€â”€ ZombieWaves_Main.vs
+        â””â”€â”€ ZombieEE_*.vs
+```
+
+---
+
+# Estado actual del proyecto
+
+| Sistema | Estado v2.0 |
+|---|---|
+| Mapa estratÃ©gico | Implementado |
+| Sistema de fortalezas | Estable |
+| Recompensa por Foro neutral | Estable |
+| Guard Posts | Estable |
+| Recompensas territoriales | Estables |
+| Defensa auxiliar de Outposts | Estable |
+| Intro Zombies | Implementada |
+| GeneraciÃ³n Zombies R1-R15 | Estable |
+| Zombies R16+ endless | Implementado |
+| 8 frentes tÃ¡cticos | Implementados |
+| Red territorial de 18 nodos | Implementada |
+| Asedio Zombies | Implementado |
+| Captura Zombies | Implementada |
+| Recompensas Zombies | Implementadas |
+| Easter Egg | Completo |
+| Sacrificio de 50 aldeanos | Implementado |
+| Ataque de 50 Anubis | Implementado |
+| 8 portales / cierre de 4 | Implementado |
+| Parada definitiva de nuevas hordas | Implementada |
+| Campamento cartaginÃ©s | Implementado |
+| Asalto final de 200 unidades | Implementado |
+| DiÃ¡logo y recompensa final | Implementados |
+| Manual tÃ©cnico | Actualizado a v2.0 |
+| DocumentaciÃ³n de Sequences | 23/23 |
 
 ---
 
 # Limitaciones conocidas
 
-Imperivm III no fue diseñado originalmente para algunas de las mecánicas implementadas aquí.
+## IA de asedio y unidades `InHolder`
 
-Eso obliga a trabajar alrededor de ciertas limitaciones del motor.
+El sistema Tactical puede mantener tripulaciones asociadas a un asedio.
 
-## IA y navegación
-
-La IA puede presentar dificultades especialmente alrededor de:
-
-* murallas;
-* Gates;
-* brechas;
-* entradas estrechas;
-* ciudades amuralladas;
-* transición entre movimiento y asedio.
-
-El controlador táctico de Zombies intenta compensar estas situaciones mediante detección de obstáculos, asedio, reintentos y retargeting.
-
-## Modo Zombies: slots de las rondas finales
-
-La generación actual está preparada para un máximo de:
+Existe una limitaciÃ³n conocida:
 
 ```text
-48 hordas
+una unidad puede permanecer InHolder
+despuÃ©s de que una Gate haya alcanzado el umbral de rotura
 ```
 
-porque las rondas 33-40 generan dos hordas simultáneas.
+Se evitaron intentos agresivos de expulsiÃ³n forzada porque podÃ­an producir inestabilidad.
 
-La versión actual documentada de:
-
-```text
-ZombieTactical_Main_v10_5_WALL_STUCK_GATE
-```
-
-controla todavía:
-
-```text
-HW_H1 ... HW_H32
-```
-
-Por tanto el soporte táctico de:
-
-```text
-HW_H33 ... HW_H48
-```
-
-debe alinearse antes de considerar completamente cerradas las rondas finales.
-
-## Recompensas territoriales
-
-Algunas Sequences calculan coordenadas para representar dos formaciones exteriores, pero su implementación actual introduce las tropas en el `Settlement` correspondiente.
-
-Este comportamiento está documentado y puede revisarse posteriormente sin cambiar el principio general de la mecánica.
-
-## Navegación marítima
-
-El motor dispone de agua, barcos y navegación, pero la utilización estratégica de estas rutas por parte de la IA es limitada en comparación con el movimiento terrestre.
-
-Por esta razón el diseño estratégico principal del escenario se apoya en corredores terrestres.
+La arquitectura endless ya no depende de que esos residuos desaparezcan para lanzar la siguiente ronda.
 
 ---
 
-# Filosofía de desarrollo
+## Asalto final
 
-Una de las reglas fundamentales del proyecto es no asumir que Imperivm III funciona como C++ estándar ni inventar APIs que el motor no posea.
+El asalto final del Easter Egg:
 
-La prioridad de evidencia utilizada es:
+```text
+NO utiliza ZombieTactical_Main
+```
+
+Los 200 atacantes reciben:
+
+```text
+advance â†’ CapitalForum_P1
+```
+
+y sÃ³lo se reactiva una unidad cuando queda:
+
+```text
+idle
+```
+
+Esto preserva los combates, pero no reproduce toda la mÃ¡quina tÃ¡ctica avanzada de Gates, brechas y captura del modo Zombies normal.
+
+---
+
+## NavegaciÃ³n marÃ­tima
+
+El motor dispone de:
+
+```text
+agua
+barcos
+puertos
+navegaciÃ³n
+```
+
+pero la IA estratÃ©gica aprovecha estas rutas de forma limitada comparada con el movimiento terrestre.
+
+Por ello el diseÃ±o principal del mapa se apoya en corredores terrestres.
+
+---
+
+## Player tÃ©cnico 12
+
+El Modo Zombies utiliza:
+
+```text
+Player 12
+```
+
+como facciÃ³n tÃ©cnica.
+
+Su comportamiento estÃ¡ integrado en el escenario actual, pero cualquier modificaciÃ³n profunda de condiciones de victoria, diplomacia o reglas globales debe comprobarse teniendo en cuenta la existencia de este Player.
+
+---
+
+# FilosofÃ­a de desarrollo
+
+Imperivm III no debe tratarse como C++ estÃ¡ndar.
+
+El proyecto utiliza esta jerarquÃ­a de evidencia:
 
 ```text
 prueba real en partida
-        ↓
+        â†“
+Sequence estable del proyecto
+        â†“
 Sequence oficial
-        ↓
+        â†“
 script nativo
-        ↓
-definición interna de clase
-        ↓
-análisis automatizado
-        ↓
+        â†“
+definiciÃ³n interna de clase
+        â†“
+anÃ¡lisis automatizado
+        â†“
 inferencia
 ```
 
-Los sistemas del proyecto se construyen, siempre que es posible, reutilizando patrones que existen realmente dentro del juego.
+No se incorporan APIs al cÃ³digo de producciÃ³n Ãºnicamente porque su nombre parezca plausible.
 
-Esto ha permitido confirmar y utilizar mecanismos como:
+La investigaciÃ³n ha confirmado, entre otras, herramientas como:
 
 ```text
 Place()
 SetPlayer()
+SetHealth()
+SetLevel()
+SetFood()
 SetFeeding()
 SetNoAIFlag()
 ForceAddUnit()
 ObjsInRange()
 EnemyObjs()
+ClassPlayerObjs()
 Group()
 AddToGroup()
+RemoveFromGroup()
 EnvReadInt()
 EnvWriteInt()
+IntArray
+ObjList.Siege()
 SetCommand()
 RunSequence()
-SpawnGroupInHolder()
+RunAIHelper()
+Conversation.Init()
+Conversation.SetActor()
+Conversation.Run()
+PlayMovie()
+BlockUserInput()
+UnblockUserInput()
+StartViewFollow()
+StopViewFollow()
+ShowAnnouncement()
+HideAnnouncement()
+UserNotification()
+Unit.AddItem()
 ```
-
-La documentación distingue expresamente entre comportamiento confirmado, evidencia parcial e inferencia.
 
 ---
 
-# Objetivo
+# Objetivo del proyecto
 
-La intención final de **Imperivm III — Guerra Total** es convertir una partida de Imperivm III en una guerra territorial de larga duración en la que:
+La intenciÃ³n de **Imperivm III â€” Guerra Total** es convertir una partida normal en una guerra territorial de larga duraciÃ³n donde:
 
-* la geografía importe;
-* conquistar una posición tenga consecuencias;
-* las fortalezas sean auténticos objetivos militares;
-* los puestos fronterizos tengan valor estratégico;
-* las ciudades neutrales impulsen la expansión;
-* las tropas almacenadas participen en la defensa;
-* diferentes regiones produzcan diferentes frentes;
-* la IA tenga nuevos sistemas con los que interactuar;
-* y una amenaza externa pueda alterar por completo una guerra entre civilizaciones.
+- la geografÃ­a importe;
+- conquistar una posiciÃ³n tenga consecuencias;
+- las fortalezas sean objetivos militares reales;
+- los puestos fronterizos tengan valor;
+- las ciudades neutrales impulsen la expansiÃ³n;
+- las tropas almacenadas participen en la defensa;
+- las regiones produzcan frentes distintos;
+- la IA tenga nuevos sistemas con los que interactuar;
+- el Modo Zombies altere el equilibrio entre civilizaciones;
+- las rondas puedan continuar indefinidamente;
+- el jugador pueda descubrir un Easter Egg completo durante la partida.
 
-El proyecto combina diseño de mapa, scripting, experimentación e ingeniería inversa para llevar el editor de Imperivm III más allá de sus mecánicas habituales.
+El proyecto combina:
+
+```text
+diseÃ±o de mapa
++
+scripting
++
+experimentaciÃ³n
++
+ingenierÃ­a inversa
++
+documentaciÃ³n tÃ©cnica
+```
+
+para llevar el editor de Imperivm III mucho mÃ¡s allÃ¡ de sus mecÃ¡nicas habituales.
 
 ---
 
@@ -821,6 +1986,7 @@ El proyecto combina diseño de mapa, scripting, experimentación e ingeniería i
 
 Este es un proyecto **no oficial** realizado para **Imperivm III / Imperivm: Great Battles of Rome HD**.
 
-No está afiliado ni respaldado por los desarrolladores o distribuidores originales del juego.
+No estÃ¡ afiliado ni respaldado por los desarrolladores o distribuidores originales del juego.
 
-Todo el trabajo de scripting, documentación, diseño de escenario e investigación contenido en este repositorio corresponde al proyecto **Imperivm III — Guerra Total**.
+Todo el trabajo de scripting, documentaciÃ³n, diseÃ±o de escenario e investigaciÃ³n contenido en este repositorio corresponde al proyecto **Imperivm III â€” Guerra Total**.
+
