@@ -8,6 +8,26 @@
 
 **Versión 2.0 · 03/09/2026 · ESTABLE**
 
+<div align="center">
+
+# Imperivm III — Guerra Total
+
+### Un escenario estratégico a gran escala para Imperivm III / Great Battles of Rome HD
+
+**Guerra territorial · Fortalezas dinámicas · Recompensas estratégicas · Modo Zombies endless · Easter Egg completo**
+
+**Versión 2.0 · 03/09/2026 · ESTABLE**
+
+<div align="center">
+
+# Imperivm III — Guerra Total
+
+### Un escenario estratégico a gran escala para Imperivm III / Great Battles of Rome HD
+
+**Guerra territorial · Fortalezas dinámicas · Recompensas estratégicas · Modo Zombies endless · Easter Egg completo**
+
+**Versión 2.0 · 03/09/2026 · ESTABLE**
+
 <br>
 
 <a href="https://youtu.be/mB7ZS9gRAIE">
@@ -24,16 +44,14 @@
 
 <br>
 
-🎮 **[Descargar escenario jugable](mapa/Carlos%20Guerra%20Total%20prueba%20zombie.BFHP)**  
-🎬 **[Descargar cinemática ZombieIntro](movies/ZombieIntro.avi)**
+🎮 **[⬇️ Descargar escenario jugable (.BFHP)](https://github.com/CarlosTorresCid/Imperivm-III-/raw/refs/heads/main/mapa/Carlos_GerraTotal2_ZOMBIE_FINAL.BFHP)**  
+🎬 **[⬇️ Descargar cinemática ZombieIntro (.avi)](https://github.com/CarlosTorresCid/Imperivm-III-/raw/refs/heads/main/movies/ZombieIntro.avi)**
 
 </div>
-
 ---
 
 # Sobre el proyecto
 
-# Sobre el proyecto
 
 **Imperivm III — Guerra Total** es un proyecto de modificación, scripting y diseño de escenario para **Imperivm III / Imperivm: Great Battles of Rome HD**.
 
