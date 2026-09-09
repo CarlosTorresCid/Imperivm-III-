@@ -10,13 +10,28 @@
 
 <br>
 
-<img src="imagenes/pantalla%20carga/Portada.png"
-     alt="Imperivm III Guerra Total - Modo Zombies"
-     width="900">
+<a href="https://youtu.be/mB7ZS9gRAIE">
+  <img src="imagenes/pantalla%20carga/Portada.png"
+       alt="Imperivm III Guerra Total - Modo Zombies"
+       width="900">
+</a>
+
+<br><br>
+
+### ▶️ [Ver vídeo completo en YouTube](https://youtu.be/mB7ZS9gRAIE)
+
+**Presentación del proyecto · Evolución del mapa · Nuevas mecánicas · Modo Zombies · Easter Egg · Instalación**
+
+<br>
+
+🎮 **[Descargar escenario jugable](mapa/Carlos%20Guerra%20Total%20prueba%20zombie.BFHP)**  
+🎬 **[Descargar cinemática ZombieIntro](movies/ZombieIntro.avi)**
 
 </div>
 
 ---
+
+# Sobre el proyecto
 
 # Sobre el proyecto
 
